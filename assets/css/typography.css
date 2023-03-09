@@ -1,0 +1,252 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  letter-spacing: -0.1px !important;
+  white-space: normal;
+  font-family: Dana !important;
+}
+
+.text-rh1,
+.text-rh2,
+.text-rh3,
+.text-rh4,
+.text-rh5,
+.text-rh6,
+.text-rbody-1,
+.text-rbody-2,
+.text-rsubtitle-1,
+.text-rsubtitle-2,
+.text-roverline,
+.text-rcaption,
+.text-rbutton,
+.text-rsmall {
+  letter-spacing: -0.1px;
+  white-space: normal;
+}
+
+
+
+.dana {
+  font-family: Dana !important;
+}
+.dana-fa {
+  font-family: DanaFa !important;
+}
+.desc p,
+.desc2 p {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+h2 strong {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+.bigTitle {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.title1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.title2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.title3 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.title4 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.title5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.title6 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.subtitle1 {
+  font-size: 16px !important;
+  font-weight: 600;
+}
+
+.subtitle2 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.subtitle3 {
+  font-size: 14px;
+  font-weight: 700;
+}
+.subtitle4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.subtitle42 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.subtitle5 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.subtitle52 {
+  font-size: 12px;
+  font-weight: 350;
+}
+
+.t24800{
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.t18800{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.t18600{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.t16600{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.t16800{
+  font-size: 16px;
+  font-weight: 800;
+}
+
+
+
+.t14800{
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.t14600{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.t14400{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.t12600{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+.t12400{
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.t10400{
+  font-size: 10px;
+  font-weight: 400;
+}
+
+
+
+
+
+h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 22px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 18px;
+}
+h6 {
+  font-size: 16px;
+}
+p {
+  font-size: 14px;
+}
+
+.text-rbody {
+  font-size: 40px;
+}
+.text-title {
+  font-size: 24px;
+}
+.text-title2 {
+  font-size: 22px;
+}
+.text-rsubtitle-1 {
+  font-size: 20px;
+}
+.text-rsubtitle-2 {
+  font-size: 18px;
+}
+.text-roverline {
+  font-size: 16px;
+}
+.text-rcaption {
+  font-size: 14px;
+}
+.text-rsmall {
+  font-size: 12px !important;
+}
+.text-rvsmall {
+  font-size: 10px !important;
+}
+
+.font-weight-300 {
+  font-weight: 300;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-800 {
+  font-weight: 800;
+}
+.font-weight-900 {
+  font-weight: 900;
+}
+
+.t22600{
+  font-size:22px;
+  font-weight: 600;
+}
