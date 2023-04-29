@@ -32,6 +32,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vuetify.js",
+    {src: "~/plugins/vue-cooki.js", ssr: false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +42,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
+    'nuxt-graphql-request'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -73,6 +76,49 @@ export default {
         }
       }
     }
+  },
+
+  graphql: {
+    /**
+     * An Object of your GraphQL clients
+     */
+    clients: {
+      default: {
+        /**
+         * The client endpoint url
+         */
+        endpoint: process.env.gqUrl,
+        /**
+         * Per-client options overrides
+         * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
+         */
+        options: {},
+      },
+      secondClient: {
+        // ...client config
+      },
+      // ...your other clients
+    },
+
+    /**
+     * Options
+     * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
+     */
+    options: {
+      method: 'get', // Default to `POST`
+    },
+
+    /**
+     * Optional
+     * default: true (this includes cross-fetch/polyfill before creating the graphql client)
+     */
+    useFetchPolyfill: true,
+
+    /**
+     * Optional
+     * default: false (this includes graphql-tag for node_modules folder)
+     */
+    includeNodeModules: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

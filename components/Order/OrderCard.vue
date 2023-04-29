@@ -8,24 +8,24 @@
             </v-col>
             <v-col cols="9" class="pr-8">
                 <div>
-                    <v-chip color="Gray02" class="px-5 ma-2">
+                    <v-chip color="collectionGray" class="px-5 my-2">
                         <span class="t10400"> کالکشن اردیبهشت</span>
                     </v-chip>
 
                 </div>
                 <div>
-                    <span class="t16600 Black--text">
+                    <span class="t10600 Black--text mr-2">
                         انگشتر ثمین مستطیل سبز
                     </span>
                 </div>
                 <v-row justify="start" class="mt-1 pr-3">
 
                     <div>
-                        <v-chip class=" t12400 mt-2 ml-2" outlined pill>
-                            رز گلد
+                        <v-chip class="  mt-2 ml-2" outlined pill>
+                            <span class="t10400">  رز گلد</span>
                         </v-chip>
-                        <v-chip class=" t12400  mt-2 ml-2" outlined pill>
-                            رز گلد
+                        <v-chip class="   mt-2 ml-2" outlined pill>
+                            <span class="t10400">  رز گلد</span>
                         </v-chip>
                     </div>
 
@@ -33,10 +33,10 @@
                 <v-row justify="end" class="mt-1 pr-5">
 
                     <div class="ml-10 mt-6">
-                        <span class="t18600 Black--text">
+                        <span class="t12600 Black--text">
                             ۲۵٬۰۰۰٬۰۰۰
                         </span>
-                        <span class="16400 Black--text">
+                        <span class="t10400 Black--text">
                             تومان
                         </span>
                     </div>

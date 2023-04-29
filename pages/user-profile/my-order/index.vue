@@ -1,7 +1,7 @@
 <template>
     <div class="mt-5">
         <v-row justify="center" align="center">
-            <v-col cols="11">
+            <v-col cols="9">
                 <v-row justify="center">
 
                     <v-col cols="12">
@@ -14,55 +14,56 @@
 
                         </div>
 
-                        <v-card height="56" color="Gray02" outlined class="border-r-15 py-7 px-8">
-                            <v-row justify="space-between">
-                                <span class="t12400">
-                                    شناسه سفارش
-                                </span>
-                                <span class="t12400">
-                                    تاریخ
-                                </span>
-                                <span class="t12400">
-                                    وضعیت
-                                </span>
 
+                        <v-card min-height="178" outlined class=" mt-5 border-r-15 py-7 ">
+                            <v-row justify="center" class="mt--58">
+                                <v-card height="36" width="250" color="Cultured" outlined
+                                    class="border-r-15 px-8 ">
+                                    <v-row justify="space-between" class="pt-5 pl-2">
+                                        <span class="t10400">
+                                            شناسه سفارش
+                                        </span>
+                                        <span class="t10400 ml-5">
+                                            تاریخ
+                                        </span>
+                                        <span class="t10400">
+                                            وضعیت
+                                        </span>
+
+                                    </v-row>
+                                </v-card>
                             </v-row>
-                        </v-card>
-                        <v-card min-height="178" outlined class=" mt-5 border-r-15 py-7 px-8">
-                            <v-row justify="space-between">
-                                <span class="t12400">
+                            <v-row justify="space-between" class="mt-8 pr-14 pl-12">
+                                <span class="t12400 ">
                                     ۱۲۳۴۵۶۷
                                 </span>
                                 <span class="t12400">
                                     ۱۴۰۱/۱۰/۰۳
                                 </span>
 
-                                <span class="t12400">
+                                <span class="t12400 ">
                                     تحویل شده
                                 </span>
                                 <!-- <span class="t14400">
                                     <v-icon>mdi-dots-vertical</v-icon>
                                 </span> -->
                             </v-row>
-                            <v-row justify="start" class="mt-6">
+                            <v-row justify="center" class="mt-8 ">
                                 <div class="mx-2">
-                                    <v-img height="55" width="55"
-                                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                                         class="border-r-15"></v-img>
                                 </div>
                                 <div class="mx-2">
-                                    <v-img height="55" width="55"
-                                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                                         class="border-r-15"></v-img>
                                 </div>
                                 <div class="mx-2">
-                                    <v-img height="55" width="55"
-                                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                                         class="border-r-15"></v-img>
                                 </div>
                             </v-row>
 
-                            <v-row justify="space-between mt-10">
+                            <v-row justify="space-between mt-10 pl-5 pr-15">
                                 <span class="t12400">
                                     ۲۰,۰۰۰,۰۰۰ تومان
                                 </span>

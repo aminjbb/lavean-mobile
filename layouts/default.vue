@@ -1,20 +1,8 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed right app>
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -24,77 +12,77 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
+    <v-app-bar :clipped-left="clipped" fixed app color="white" height="75" class="px-0">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <span class="mr-10">
+        <img width="67" height="16" src="~/assets/img/mainLogo.png" alt="">
+      </span>
+      <v-spacer />
+
+      <div class="pl-3">
+        <span class="mx-1">
+          <img width="18" src="~/assets/img/searchicon.svg" alt="">
+        </span>
+        <span class="mx-1">
+          <img width="16" src="~/assets/img/cardicon.svg" alt="">
+        </span>
+
+        <span class="mx-1">
+          <img width="18" src="~/assets/img/usericon.svg" alt="">
+        </span>
+      </div>
+      <div class="gold-price-box-img">
+        <img src="~/assets/img/goldPriceImg.svg" alt="">
+      </div>
+      <div class="gold-price-box">
+        <v-row justify="space-between" class="pt-4 px-8 Arsenic--text">
+          <span class="t10400">
+            قیمت لحظه ای طلا
+          </span>
+          <span class="t10400">
+            ۱,۴۵۵,۸۸۸,۹۳۰ ریال
+          </span>
+        </v-row>
+      </div>
     </v-app-bar>
     <v-main>
       <div class="rcontainer">
         <Nuxt />
-        
+
         <!-- <v-divider class="mt-16"></v-divider> -->
         <!-- <Footer /> -->
       </div>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+
+    <div class="green-footer">
+      <div class="footer-social text-center">
+        <span class="t14600 MagicMint--text">
+          لاوین در شبکه های اجتماعی
+        </span>
+        <div class="mt-3">
+          <span class="mx-1">
+            <img src="~/assets/img/insta.svg" alt="">
+          </span>
+          <span class="mx-1">
+            <img src="~/assets/img/facebook.svg" alt="">
+          </span>
+
+          <span class="mx-1">
+            <img src="~/assets/img/telegram.svg" alt="">
+          </span>
+        </div>
+      </div>
+      <div class="black-footer"></div>
+    </div>
   </v-app>
 </template>
 
 <script>
 export default {
   name: 'DefaultLayout',
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,

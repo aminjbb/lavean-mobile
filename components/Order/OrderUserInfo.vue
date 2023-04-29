@@ -1,58 +1,67 @@
 <template>
     <div class="mt-2">
         <v-card outlined rounded="lg pt-3 pb-3">
-            <div class="ma-4">
-                <span class="t14600 Black--text Black--text">
+            <div class="ma-4 d-felx align-content-center">
+                <span class="position__absolute">
+                    <img src="~/assets/img/info.svg" alt="">
+                </span>
+                <span class="t14600 Black--text mr-8">
                     ثبت اطلاعات گیرنده
                 </span>
             </div>
+
             <v-divider></v-divider>
             <div class="mt-10 mb-5">
 
-                <v-row>
+                <v-row class="pb-5">
                     <v-form @submit.prevent="validate()" ref="address" v-model="valid">
                         <div>
                             <v-row justify="center">
                                 <v-col cols="10">
-                                    <div class="px-3 pb-2">
-                                        <span class="t14600 Black--text">نام و نام خانوادگی </span>
+                                    <div class="px-1 pb-2">
+                                        <span class="t12600 GraniteGray--text">نام و نام خانوادگی </span>
                                     </div>
-                                    <v-text-field class="border-r-15 mr-2" :rules="nameRule" v-model="form.addressName"
-                                        placeholder="نام آدرس" background-color="WhiteSmoke" outlined></v-text-field>
+                                    <v-text-field color="black" hide-details class="border-r-15 " :rules="nameRule"
+                                        v-model="form.addressName" placeholder="نام آدرس" background-color="WhiteSmoke"
+                                        outlined></v-text-field>
                                 </v-col>
                                 <v-col cols="10">
-                                    <div class="px-3 pb-2">
-                                        <span class="t14600 Black--text">شماره موبایل</span>
+                                    <div class="px-1 pb-2">
+                                        <span class="t12600 GraniteGray--text">شماره موبایل</span>
                                     </div>
-                                    <v-text-field placeholder="شماره موبایل" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
-
-
-                                </v-col>
-                                <v-col cols="10">
-                                    <div class="px-3 pb-2">
-                                        <span class="t14600 Black--text">کد ملی</span>
-                                    </div>
-                                    <v-text-field placeholder="کد ملی" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
+                                    <v-text-field color="black" hide-details placeholder="شماره موبایل"
+                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        class="border-r-15 "></v-text-field>
 
 
                                 </v-col>
                                 <v-col cols="10">
-                                    <div class="px-3 pb-2">
-                                        <span class="t14600 Black--text">ایمیل</span>
+                                    <div class="px-1 pb-2">
+                                        <span class="t12600 GraniteGray--text">کد ملی</span>
                                     </div>
-                                    <v-text-field placeholder="ایمیل" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-text-field>
+                                    <v-text-field color="black" hide-details placeholder="کد ملی"
+                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        class="border-r-15 "></v-text-field>
 
 
                                 </v-col>
                                 <v-col cols="10">
-                                    <div class="px-3 pb-2">
-                                        <span class="t14600 Black--text">توضیحات سفارش</span>
+                                    <div class="px-1 pb-2">
+                                        <span class="t12600 GraniteGray--text">ایمیل</span>
                                     </div>
-                                    <v-textarea placeholder="توضیحات سفارش" background-color="WhiteSmoke" outlined
-                                        :rules="addressRule" v-model="form.address" class="border-r-15 mr-2"></v-textarea>
+                                    <v-text-field color="black" hide-details placeholder="ایمیل"
+                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        class="border-r-15 "></v-text-field>
+
+
+                                </v-col>
+                                <v-col cols="10">
+                                    <div class="px-1 pb-2">
+                                        <span class="t14600 GraniteGray--text">توضیحات سفارش</span>
+                                    </div>
+                                    <v-textarea color="t12600" hide-details placeholder="توضیحات سفارش"
+                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        class="border-r-15 "></v-textarea>
 
 
                                 </v-col>
@@ -60,7 +69,7 @@
 
                             </v-row>
 
-                         
+
                         </div>
                     </v-form>
                 </v-row>

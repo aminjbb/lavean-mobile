@@ -1,13 +1,13 @@
 <template>
   <div>
     <HomeMainbanner />
-    <div class="position__relative">
+    <!-- <div class="position__relative">
       <v-divider class="ma-6"></v-divider>
       <div class="position__absolute sptial-sales-box text-center">
         <span class="t16600">تخفیف ویژه!</span>
       </div>
-    </div>
-
+    </div> -->
+    <GiftSection />
     <HomeProduct />
     <InfoLavin />
     <div class="">
@@ -24,17 +24,17 @@
         </v-container>
       </v-img>
       <v-row justify="center" align="center">
-        <v-col cols="6">
-          <v-btn height="35" class="px-15 mt--20" color="WhiteSmoke" dark rounded="xl">
-            <span class="t20400 VampireBlack--text">
-              شروع کنیم
-            </span>
-          </v-btn>
-        </v-col>
+        <v-btn width="130" height="35" class="px-15 mt--20" color="WhiteSmoke" dark rounded="xl">
+          <span class="t14400 VampireBlack--text">
+            شروع کنیم
+          </span>
+        </v-btn>
       </v-row>
     </div>
 
-    <HomeCategory/>
+    <HomeCategory />
+
+    <laveanLevel />
   </div>
 </template>
 
@@ -44,6 +44,8 @@ import HomeMainbanner from "~/components/Home/HomeMainbanner.vue";
 import HomeProduct from "~/components/Home/HomeProduct.vue";
 import HomeCategory from "~/components/Home/HomeCategory.vue";
 import InfoLavin from "~/components/Home/InfoLavin.vue";
+import GiftSection from "~/components/Home/GiftSection.vue";
+import laveanLevel from "~/components/Home/laveanLevel.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
@@ -55,6 +57,13 @@ export default {
     HomeCategory,
     VueperSlides,
     VueperSlide,
+    GiftSection,
+    laveanLevel
+  },
+
+  beforeMount() {
+    this.$store.dispatch('set_productHome')
+    this.$store.dispatch('set_produCategories')
   }
 }
 </script>

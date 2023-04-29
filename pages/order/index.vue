@@ -1,20 +1,20 @@
 <template>
-    <div class="rcontainer">
+    <div class="rcontainer my-15">
         <v-row justify="center" align="center">
             <v-col cols="11">
                 <v-row justify="center">
                     <v-col cols="12 ">
-                        <OrderDetail />
-                        <OrderUserInfo />
-                        <OrderDelivery />
+                        <!-- <OrderDetail /> -->
+                        <!-- <OrderUserInfo /> -->
+                        <!-- <OrderDelivery /> -->
                         <OrderBranche />
-                        <OrderAddress />
+                        <!-- <OrderAddress /> -->
 
                     </v-col>
-
-                    <v-col cols="12" class="bottom_nav2 py-3 rounded_top-btmnav ">
+                    <div class="bottom_nav2">
                         <OrderPrice />
-                    </v-col>
+                    </div>
+
                 </v-row>
             </v-col>
 
