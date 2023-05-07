@@ -1,5 +1,21 @@
 <template>
     <div class="mt-5">
+        <div>
+            <v-row justify="space-between" class="pr-10 pl-8 pb-8 pt-6">
+                <div class="up-titel-section">
+                    <v-row align="center" class="pt-3 pr-2">
+                        <span class="mr-3"> <img class="mt-1" src="~/assets/img/package.svg" alt=""></span>
+                        <span class="t12400 mr-3">تاریخچه سفارش ها</span>
+                    </v-row>
+                </div>
+                <div>
+                    <v-icon @click="$router.go(-1)">
+                        mdi-chevron-left-circle-outline
+                    </v-icon>
+                </div>
+            </v-row>
+        </div>
+        <v-divider></v-divider>
         <v-row justify="center" align="center">
             <v-col cols="9">
                 <v-row justify="center">
@@ -15,10 +31,10 @@
                         </div>
 
 
-                        <v-card min-height="178" outlined class=" mt-5 border-r-15 py-7 ">
+                        <v-card min-height="178" outlined class=" mt-8 border-r-15 py-7 " v-for="(order, index) in orders"
+                            :key="order.id">
                             <v-row justify="center" class="mt--58">
-                                <v-card height="36" width="250" color="Cultured" outlined
-                                    class="border-r-15 px-8 ">
+                                <v-card height="36" width="250" color="Cultured" outlined class="border-r-15 px-8 ">
                                     <v-row justify="space-between" class="pt-5 pl-2">
                                         <span class="t10400">
                                             شناسه سفارش
@@ -35,41 +51,35 @@
                             </v-row>
                             <v-row justify="space-between" class="mt-8 pr-14 pl-12">
                                 <span class="t12400 ">
-                                    ۱۲۳۴۵۶۷
+                                    {{ order.id }}
                                 </span>
                                 <span class="t12400">
-                                    ۱۴۰۱/۱۰/۰۳
+                                    {{ orderDate(order.createdAt) }}
                                 </span>
 
                                 <span class="t12400 ">
-                                    تحویل شده
+                                    <span v-if="order.currentStatus">
+                                        {{ order.currentStatus.name }}</span>
+
                                 </span>
                                 <!-- <span class="t14400">
                                     <v-icon>mdi-dots-vertical</v-icon>
                                 </span> -->
                             </v-row>
                             <v-row justify="center" class="mt-8 ">
-                                <div class="mx-2">
-                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                                        class="border-r-15"></v-img>
+                                <div class="mx-2" v-for="(variant, i) in order.details" :key="i">
+                                    <v-img height="55" width="55" :src="productImage(variant)" class="border-r-15"></v-img>
                                 </div>
-                                <div class="mx-2">
-                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                                        class="border-r-15"></v-img>
-                                </div>
-                                <div class="mx-2">
-                                    <v-img height="55" width="55" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-                                        class="border-r-15"></v-img>
-                                </div>
+
                             </v-row>
 
                             <v-row justify="space-between mt-10 pl-5 pr-15">
                                 <span class="t12400">
                                     ۲۰,۰۰۰,۰۰۰ تومان
                                 </span>
-                                <span class="t12400">
+                                <v-btn :to="'/user-profile/my-order/' + order.id" icon class="t12400" >
                                     <v-icon>mdi-dots-vertical</v-icon>
-                                </span>
+                                </v-btn>
 
                                 <!-- <span class="t14400">
                                     <v-icon>mdi-dots-vertical</v-icon>
@@ -93,10 +103,50 @@
 <script>
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import { PublicMethod } from '~/store/classes'
 export default {
     components: {
         UserProfileNavigation,
         ModalAddAddres
+    },
+    layout: 'empty',
+    data() {
+        return {
+            publicMethod: new PublicMethod
+        }
+    },
+
+    mounted() {
+        this.$store.dispatch('set_myOrders')
+    },
+
+    methods: {
+        orderDate(e) {
+            try {
+                var tempDate = e.split('T');
+                var splitDate = tempDate[0].split('-');
+                return this.publicMethod.gregorian_to_jalali(parseInt(splitDate[0]), parseInt(splitDate[1]), parseInt(splitDate[2]))
+            } catch (error) {
+                return error
+            }
+        },
+
+        productImage(e) {
+            try {
+                return process.env.baseUrl + '/media/' + e.variant.product.imageCover.imageThumbnail.medium
+            } catch (error) {
+                return ''
+            }
+        }
+
+    },
+
+    computed: {
+        orders() {
+            return this.$store.getters['get_myOrders']
+        },
+
+
     }
 }
 </script>

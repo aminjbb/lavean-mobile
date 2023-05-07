@@ -14,7 +14,7 @@
             <div class="mt-10 mb-5">
 
                 <v-row class="pb-5">
-                    <v-form @submit.prevent="validate()" ref="address" v-model="valid">
+                    <v-form @submit.prevent="validate()" ref="userInfoOrder" v-model="valid">
                         <div>
                             <v-row justify="center">
                                 <v-col cols="10">
@@ -22,7 +22,7 @@
                                         <span class="t12600 GraniteGray--text">نام و نام خانوادگی </span>
                                     </div>
                                     <v-text-field color="black" hide-details class="border-r-15 " :rules="nameRule"
-                                        v-model="form.addressName" placeholder="نام آدرس" background-color="WhiteSmoke"
+                                        v-model="form.fullName" placeholder="نام آدرس" background-color="WhiteSmoke"
                                         outlined></v-text-field>
                                 </v-col>
                                 <v-col cols="10">
@@ -30,7 +30,7 @@
                                         <span class="t12600 GraniteGray--text">شماره موبایل</span>
                                     </div>
                                     <v-text-field color="black" hide-details placeholder="شماره موبایل"
-                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        background-color="WhiteSmoke" outlined :rules="mobileRule" v-model="form.mobile"
                                         class="border-r-15 "></v-text-field>
 
 
@@ -40,7 +40,7 @@
                                         <span class="t12600 GraniteGray--text">کد ملی</span>
                                     </div>
                                     <v-text-field color="black" hide-details placeholder="کد ملی"
-                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        background-color="WhiteSmoke" outlined :rules="rule" v-model="form.nationalCode"
                                         class="border-r-15 "></v-text-field>
 
 
@@ -50,7 +50,7 @@
                                         <span class="t12600 GraniteGray--text">ایمیل</span>
                                     </div>
                                     <v-text-field color="black" hide-details placeholder="ایمیل"
-                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        background-color="WhiteSmoke" outlined :rules="rule" v-model="form.email"
                                         class="border-r-15 "></v-text-field>
 
 
@@ -60,7 +60,7 @@
                                         <span class="t14600 GraniteGray--text">توضیحات سفارش</span>
                                     </div>
                                     <v-textarea color="t12600" hide-details placeholder="توضیحات سفارش"
-                                        background-color="WhiteSmoke" outlined :rules="addressRule" v-model="form.address"
+                                        background-color="WhiteSmoke" outlined v-model="form.comment"
                                         class="border-r-15 "></v-textarea>
 
 
@@ -133,5 +133,48 @@ export default {
             },
         };
     },
+
+    methods: {
+        setForm() {
+            try {
+                this.form.fullName = this.user.firstName
+                this.form.mobile = this.client.mobile
+                this.form.email = this.user.username
+                this.form.nationalCode = this.userInfo.nationalCode
+            } catch (error) {
+
+            }
+        }
+    },
+
+    computed: {
+        userInfo() {
+            try {
+                return this.$store.getters['get_meCustomer']
+            } catch (error) {
+
+            }
+        },
+
+        client() {
+            try {
+                return this.userInfo.client
+            } catch (error) {
+                return ''
+            }
+        },
+        user() {
+            try {
+                return this.client.user
+            } catch (error) {
+                return ''
+            }
+        }
+    },
+
+
+    mounted() {
+        this.setForm()
+    }
 }
 </script>

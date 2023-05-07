@@ -3,23 +3,14 @@
         <v-row>
             <div class="d-flex">
                 <v-col cols="4" class="pt-5 pl-0 pr-8">
-                    <v-btn height="32" class="px-10" color="ChineseWhite" dark outlined rounded="xl">
-                        <v-row justify="space-between" align="center">
-                            <span class="t10400 VampireBlack--text mr-2">
-                                کالکشن ها
-                            </span>
-                            <v-icon class="mr-5" color="VampireBlack">
-                                mdi-chevron-down
-                            </v-icon>
-                        </v-row>
-                    </v-btn>
+                    <CollectionFillterModal />
                 </v-col>
 
 
                 <v-col cols="4">
                     <v-card outlined class="border-r-15 mt-2" min-height="31" max-width="115">
-                        <v-item-group v-model="shopFilterBtn" active-class="btn2_toggle-plp">
-                            <v-item v-slot="{ active, toggle }" value="most_expensive">
+                        <v-item-group v-model="available" active-class="btn2_toggle-plp">
+                            <v-item v-slot="{ active, toggle }" value="available">
                                 <v-btn depressed rounded class=" white_back border-r-15" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
@@ -38,16 +29,7 @@
                 </v-col>
 
                 <v-col cols="4" class="pt-5 pr-0 pl-8">
-                    <v-btn height="32" class="px-10" color="ChineseWhite" dark outlined rounded="xl">
-                        <v-row justify="space-between" align="center">
-                            <span class="t10400 VampireBlack--text mr-2">
-                                کالکشن ها
-                            </span>
-                            <v-icon class="mr-5" color="VampireBlack">
-                                mdi-chevron-down
-                            </v-icon>
-                        </v-row>
-                    </v-btn>
+                  <PlpSortSheet/>
                 </v-col>
             </div>
         </v-row>
@@ -68,13 +50,21 @@
 </template>
 
 <script>
+import { ProductListFilter } from "~/store/classes"
+import CollectionFillterModal from '~/components/Plp/CollectionFillterModal'
+import PlpSortSheet from '~/components/Plp/PlpSortSheet'
 export default {
+
+    components: {
+        CollectionFillterModal,PlpSortSheet
+    },
     data() {
         return {
-            shopFilterBtn: '',
+            available: 'all',
             min: 2000000,
             max: 0,
             value: [0, 20000000],
+            productFilter: new ProductListFilter(),
         }
     },
 
@@ -87,6 +77,50 @@ export default {
                 return text;
             }
         },
+        outsideSearchShow() {
+            if (this.searchShow) {
+                this.searchShow = false;
+            }
+        },
+        outsidesortShow() {
+            if (this.sortShow) {
+                this.sortShow = false;
+            }
+        },
+        fillterColection() {
+
+            this.productFilter.colection = this.selectedColection
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterSort() {
+
+            this.productFilter.sort = this.sort
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterPrice() {
+            this.productFilter.min_price = this.value[0]
+            this.productFilter.max_price = this.value[1]
+
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        },
+        filterAvailable() {
+            if (this.available == 'available') {
+                this.productFilter.available = 'available'
+            }
+            else {
+                this.productFilter.available = ''
+            }
+            this.$router.push("/products?" + this.productFilter.query_maker());
+        }
     },
+    watch: {
+        available() {
+            this.filterAvailable()
+        },
+
+        value() {
+            this.filterPrice()
+        },
+    }
 }
 </script>

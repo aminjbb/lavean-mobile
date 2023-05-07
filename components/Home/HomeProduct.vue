@@ -19,7 +19,7 @@
             </template>
             <vueper-slide v-for="(product, index) in homeProducts " :key="index">
                 <template #content>
-                    <v-row justify="center">
+                    <v-row justify="center" class="pt-5">
                         <ProductCard :product="product" />
                     </v-row>
                 </template>

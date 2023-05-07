@@ -1,10 +1,25 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed right app>
-      <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed right app
+      style="height:100% ;">
+      <div class="pa-2">
+        <v-col>
+          <v-row class="ma-0" justify="space-between" align="center">
+            <span class="t14600 Black--text">
+              منو
+            </span>
+            <v-btn icon @click="drawer = false">
+              <v-icon> mdi-close </v-icon>
+            </v-btn>
+          </v-row>
+        </v-col>
+      </div>
+
+      <v-divider></v-divider>
+      <v-list class="px-8 mt-5">
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact style="height: 26px;">
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-img width="16" :src="item.icon"></v-img>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -89,15 +104,25 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: require('~/assets/img/shopMenu.svg'),
+          title: 'فروشگاه',
+          to: '/products'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
+          icon: require('~/assets/img/magMenu.svg'),
+          title: 'لاوین مگ',
+          to: '/lavean-mag'
+        },
+        {
+          icon: require('~/assets/img/laveanMenu.svg'),
+          title: 'درباره ما',
+          to: '/about-us'
+        },
+        {
+          icon: require('~/assets/img/contactusMenu.svg'),
+          title: 'تماس با ما',
+          to: '/contact-us'
+        },
       ],
       miniVariant: false,
       right: true,

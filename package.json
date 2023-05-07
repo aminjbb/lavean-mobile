@@ -22,7 +22,8 @@
     "vue-template-compiler": "^2.6.14",
     "vueperslides": "^2.16.0",
     "vuetify": "^2.6.1",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "vue-persian-datetime-picker": "^2.10.3"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",

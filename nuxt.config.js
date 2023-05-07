@@ -32,7 +32,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vuetify.js",
-    {src: "~/plugins/vue-cooki.js", ssr: false},
+    { src: "~/plugins/vue-cooki.js", ssr: false },
+    { src: "~/plugins/datePicker.js", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

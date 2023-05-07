@@ -15,10 +15,30 @@ export const state = () => ({
   meCustomer: '',
   deliveryMethods: [],
   orderBrache: [],
-  braches: []
+  braches: [],
+  clientOrder: '',
+  myOrders: [],
+  clientPayment: '',
+  clientBanners: [],
+  produCategoriesHome: []
 })
 
 export const mutations = {
+  set_produCategoriesHome(state, obj) {
+    state.produCategoriesHome = obj
+  },
+  set_clientBanners(state, obj) {
+    state.clientBanners = obj
+  },
+  set_clientPayment(state, obj) {
+    state.clientPayment = obj
+  },
+  set_myOrders(state, obj) {
+    state.myOrders = obj
+  },
+  set_clientOrder(state, obj) {
+    state.clientOrder = obj
+  },
   set_braches(state, obj) {
     state.braches = obj
   },
@@ -71,7 +91,218 @@ export const mutations = {
 
 
 export const actions = {
+  async set_produCategoriesHome({ commit }, form) {
 
+    const query = gql`
+        query{
+            clientProductCategories(parent_Isnull:true){
+              results{
+                id,name,image,url
+                subCategories{
+                  id,name,url
+                }
+              }
+            }
+          } `;
+    const categories = await this.$graphql.default.request(query, {});
+    commit('set_produCategoriesHome', categories.clientProductCategories.results);
+  },
+  async set_clientBanners({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+        clientBanners(type:SHOP_DESKTOP_MAIN_PAGE_TOP){
+          results{
+            image
+            url
+          }
+        }
+          
+      } `;
+    const banner = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientBanners', banner.clientBanners.results);
+  },
+  async set_clientPayment({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      clientPayment(payId:`+ id + `){
+          id
+          gateway
+          amount
+          createdAt
+          paidAt
+          refId
+          requestId
+          saleReferenceId
+          authority
+          order{
+              id
+              details{
+                variant{
+                  weight,price
+                  product{
+                    url
+                    discountPercent
+                    collection{
+                      name
+                    }
+                    name
+                    imageCover{
+                      imageThumbnail{
+                        medium
+                      }
+                    }
+                  }
+                }
+                variantName
+                variantUnitPriceWithoutDiscount
+                variantUnitPrice
+              }
+              finalPrice
+              delivery{
+                name
+              }
+              address{
+                addressDetail
+                number
+                postalCode
+                city{
+                  name
+                  province{
+                    name
+                  }
+                }
+              }
+              createdAt
+              currentStatus{
+                name
+              }
+              clientComment
+          }
+        }
+          
+      } `;
+    const payment = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientPayment', payment.clientPayment);
+  },
+
+  async set_myOrders({ commit }) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      meCustomer{
+        orders{
+          id
+          details{
+            variant{
+              weight,price
+              product{
+                url
+                discountPercent
+                collection{
+                  name
+                }
+                name
+                imageCover{
+                  imageThumbnail{
+                    medium
+                  }
+                }
+              }
+            }
+            variantName
+            variantUnitPriceWithoutDiscount
+            variantUnitPrice
+          }
+          finalPrice
+          delivery{
+            name
+          }
+          address{
+            addressDetail
+            number
+            postalCode
+            city{
+              name
+              province{
+                name
+              }
+            }
+          }
+          createdAt
+          currentStatus{
+            name
+          }
+          clientComment
+        }
+        }
+          
+      } `;
+    const orders = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_myOrders', orders.meCustomer.orders);
+  },
+  async set_clientOrder({ commit }, id) {
+    const requestHeaders = {
+      Authorization: "Bearer " + cookies.get("customer_token"),
+    };
+    const query = gql`
+    query{
+      clientOrder(orderId:`+ id + `){
+        id
+        details{
+          variant{
+            weight,price
+            product{
+              url
+              discountPercent
+              collection{
+                name
+              }
+              name
+              imageCover{
+                imageThumbnail{
+                  medium
+                }
+              }
+            }
+          }
+          variantName
+          variantUnitPriceWithoutDiscount
+          variantUnitPrice
+        }
+        finalPrice
+        delivery{
+          name
+        }
+        address{
+          addressDetail
+          number
+          postalCode
+          city{
+            name
+            province{
+              name
+            }
+          }
+        }
+        createdAt
+        currentStatus{
+          name
+        }
+        clientComment
+        }
+          
+        } `;
+    const order = await this.$graphql.default.request(query, {}, requestHeaders);
+    commit('set_clientOrder', order.clientOrder);
+  },
   async set_braches({ commit }) {
 
     const query = gql`
@@ -135,6 +366,7 @@ export const actions = {
                 id,weight,price
                 product{
                   url
+                  discountPercent
                   collection{
                     name
                   }
@@ -151,9 +383,10 @@ export const actions = {
               user{
                 firstName
                 lastName
-                email
+                username
               },
               mobile,
+              birthdate,
               addresses{
                 id
                 city{
@@ -172,7 +405,7 @@ export const actions = {
              },
              sex,
              nationalCode,
-             birthdate
+            
             }
           } `;
     const me = await this.$graphql.default.request(query, {}, requestHeaders);
@@ -198,6 +431,9 @@ export const actions = {
             clientProductCategories{
               results{
                 id,name,image,url
+                subCategories{
+                  id,name,url
+                }
               }
             }
           } `;
@@ -242,7 +478,7 @@ export const actions = {
     commit('set_tableLoading', true)
     const query = gql`
         query{
-            clientProducts(limit:20`+ form + `) {
+            clientProducts(limit:5`+ form + `) {
                 totalCount
                 results {
                   id,
@@ -269,13 +505,28 @@ export const actions = {
               }
           } `;
     const products = await this.$graphql.default.request(query, {});
-    commit('set_productPageLength', Math.ceil(products.clientProducts.totalCount / 20));
+    commit('set_productPageLength', Math.ceil(products.clientProducts.totalCount / 5));
     commit('set_products', products.clientProducts.results);
   },
 }
 
 export const getters = {
-  get_braches(state, obj) {
+  get_produCategoriesHome(state) {
+    return state.produCategoriesHome
+  },
+  get_clientBanners(state) {
+    return state.clientBanners
+  },
+  get_clientPayment(state) {
+    return state.clientPayment
+  },
+  get_myOrders(state) {
+    return state.myOrders
+  },
+  get_clientOrder(state) {
+    return state.clientOrder
+  },
+  get_braches(state) {
     return state.braches
   },
   get_orderBrache(state) {

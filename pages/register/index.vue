@@ -17,12 +17,12 @@
 
                                 شماره موبایل خود را وارد کنید.!
                             </span></div>
-                        <v-form class="px-10" id="numberForm">
+                        <v-form class="px-10" id="numberForm" ref="sendSms" v-model="valid" @submit.prevent="validate()">
                             <v-text-field height="20" color="Black" placeholder=" شماره موبایل" background-color="white"
                                 outlined v-model="number" :rules="mobileRule" class="border-r-15 mt-5"></v-text-field>
                         </v-form>
 
-                        <v-row justify="center" >
+                        <v-row justify="center">
                             <v-btn @click="validate()" :loading="loading" width="164" height="29" class="px-15"
                                 color="Black" dark rounded="xl">
                                 <span class="t12400">
@@ -49,6 +49,37 @@
 
 <script>
 export default {
-    layout: 'empty'
+    layout: 'empty',
+    data() {
+        return {
+            number: "",
+            loading: false,
+            valid: true,
+            mobileRule: [
+                (v) => !!v || "این فیلد الزامی است",
+                (v) =>
+                    /^(?:(\u0660\u0669[\u0660-\u0669][\u0660-\u0669]{8})|(\u06F0\u06F9[\u06F0-\u06F9][\u06F0-\u06F9]{8})|(09[0-9][0-9]{8}))$/.test(
+                        v
+                    ) || "شماره موبایل معتبر نیست",
+            ],
+        };
+    },
+    methods: {
+        validate() {
+            this.$refs.sendSms.validate();
+            setTimeout(() => {
+                if (this.valid) {
+                    this.sendSms();
+                }
+            }, 200);
+        },
+
+        sendSms() {
+
+            this.$cookies.set("registerPhone", this.number);
+            this.loading = false;
+            this.$router.push("/register/otp");
+        },
+    },
 }
 </script>

@@ -27,7 +27,7 @@
                                 </v-btn>
                             </div>
                         </v-card>
-                        <v-card outlined class="mt-5 pt-3 pb-3 br-15" width="1200" min-height="494">
+                        <v-card outlined class="mt-5 pt-3  br-15" width="1200" min-height="494">
                             <div class="ma-4 d-felx align-content-center">
                                 <span class="position__absolute">
                                     <img src="~/assets/img/ShoppingCartSimple.svg" alt="">
@@ -37,7 +37,7 @@
                                 </span>
                             </div>
                             <v-divider></v-divider>
-                            <div class="ma-5">
+                            <div class="mx-5 mt-5">
                                 <v-card height="66" class="br-15 pa-3" outlined>
                                     <v-row justify="space-between" class="pt-2">
                                         <div class="ma-1 mr-5">
@@ -45,15 +45,15 @@
                                                 <img src="~/assets/img/user.svg" alt="">
                                             </v-row>
                                             <div class="t10400 Gray_02--text mr-2">
-                                                گلزار حیدری
+                                                {{ customerName }}
                                             </div>
                                         </div>
                                         <div class="ma-1 ">
                                             <v-row justify="center" class=" my-1  mb-2">
                                                 <img src="~/assets/img/phone.svg" alt="">
                                             </v-row>
-                                            <div class="t10400 Gray_02--text mr-2">
-                                                ۰۹۳۰۰۱۷۹۶۴۸
+                                            <div class="t10400 Gray_02--text mr-2 dana-fa">
+                                                {{ customerMobile }}
                                             </div>
 
                                         </div>
@@ -62,7 +62,7 @@
                                                 <img src="~/assets/img/credit-card.svg" alt="">
                                             </v-row>
                                             <div class="t10400 Gray_02--text mr-2">
-                                                ۰۰۱۸۹۹۶۶۶--
+                                                {{ customerNationalCode }}
                                             </div>
 
 
@@ -76,15 +76,60 @@
                                             <img src="~/assets/img/map-pin.svg" alt="">
                                         </div>
                                         <span class="t10400 Gray_02--text mr-8 dana-fa">
-                                            سعادت آباد، خیابان علامه جنوبی، کوچه ۳۴ شرقی، پلاک ۲۷، واحد ۱۶
+                                            {{ orderAddressDetail }}
                                         </span>
                                     </v-row>
                                 </v-card>
+                                <div>
+                                    <v-row>
+                                        <OrderCard v-for="(card, index) in details" :key="index" :card="card" />
+
+                                    </v-row>
+                                </div>
                             </div>
+
                         </v-card>
+
                     </v-col>
                     <div class="bottom_nav2">
-                        <OrderPrice :peyment="true" />
+                        <v-row justify="center" class="pt-5">
+                            <div class="mt-2 price-order-box border-r-15">
+                                <v-row justify="space-between " align="center" class="pa-5 px-8">
+                                    <div>
+                                        <span class="t12400 ">مجموع کل تخفیف</span>
+                                    </div>
+                                    <div>
+                                        <span class="t14400 Black--text dana-fa">{{ publicMethod.splitChar(discountPrice) }} <span
+                                                class="t12400">
+                                                تومان
+                                            </span></span>
+                                    </div>
+                                </v-row>
+                            </div>
+
+                            <v-row justify="center" align="center" class="mt-1 mr-1 px-15">
+                                <v-col cols="6">
+                                    <div>
+                                        <span class="t12400 GraniteGray--text">قابل پرداخت</span>
+                                    </div>
+
+                                    <div>
+                                        <span class="t12600 GraniteGray--text dana-fa">{{ publicMethod.splitChar(cardPrice) }} <span
+                                                class="t12400 GraniteGray--text mr-1">تومان</span></span>
+                                    </div>
+
+
+                                </v-col>
+
+                                <v-col cols="6">
+                                    <v-btn :loading="loading" @click="payment()" block color="Black" dark rounded="xl">
+                                        <span class="t10600">
+                                            انتقال به درگاه پرداخت
+                                        </span>
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-row>
                     </div>
                 </v-row>
             </v-col>
@@ -98,15 +143,145 @@
 
 <script>
 import OrderPrice from '~/components/Order/OrderPrice.vue'
+import OrderCard from '~/components/Order/OrderCard.vue'
+import axios from 'axios'
+import { PublicMethod } from "~/store/classes";
 export default {
     components: {
-        OrderPrice
+        OrderPrice,
+        OrderCard
     },
     data() {
         return {
-
+            loading: false,
+            publicMethod: new PublicMethod()
         }
+    },
+
+    computed: {
+        order() {
+            return this.$store.getters['get_clientOrder']
+        },
+
+        customer() {
+            try {
+                return this.$store.getters['get_meCustomer']
+            } catch (error) {
+                return ''
+            }
+        },
+
+
+
+        customerName() {
+            try {
+                return this.customer.client.user.firstName
+            } catch (error) {
+                return ''
+            }
+        },
+        customerMobile() {
+            try {
+                return this.customer.client.mobile
+            } catch (error) {
+                return ''
+            }
+        },
+        customerNationalCode() {
+            try {
+                return this.customer.nationalCode
+            } catch (error) {
+                return ''
+            }
+        },
+        details() {
+            try {
+                return this.order.details
+            } catch (error) {
+                return []
+            }
+        },
+
+        orderAddressDetail() {
+            try {
+                return this.order.address.addressDetail
+
+            } catch (error) {
+                return ''
+            }
+        },
+        cartDetails() {
+            try {
+                return this.$store.getters['get_meCustomer'].cartDetails
+            } catch (error) {
+                return []
+            }
+        },
+        discountPrice() {
+            try {
+                var discount = 0
+                this.cartDetails.forEach(element => {
+                    if (element.variant.product.discountPercent) {
+                        discount += element.variant.price * (element.variant.product.discountPercent / 100)
+                    }
+
+                });
+                return discount;
+            } catch (error) {
+                return ''
+            }
+        },
+        cardPrice() {
+            try {
+                var price = 0
+                this.cartDetails.forEach(element => {
+                    price += element.variant.price
+                });
+                return price;
+            } catch (error) {
+                return ''
+            }
+        },
+        finalPrice() {
+            try {
+
+                return this.cardPrice - this.discountPrice;
+            } catch (error) {
+                return ''
+            }
+        },
+    },
+
+    methods: {
+        payment() {
+            this.loading = true
+            axios({
+                method: 'post',
+                url: process.env.apiUrl + 'payment/client/order/',
+                headers: {
+                    Authorization: "Bearer " + this.$cookies.get("customer_token"),
+                },
+                data: {
+                    order: this.order.id,
+
+                }
+            })
+                .then(response => {
+                    this.loading = false;
+                    // console.log(response.data.authority);
+                    window.location.href = 'https://sandbox.zarinpal.com/pg/StartPay/' + response.data.authority
+                })
+                .catch(err => {
+                    this.loading = false
+                })
+        }
+    },
+
+    mounted() {
+        this.$store.dispatch('set_clientOrder', this.$route.params.id)
+        this.$store.dispatch('set_meCustomer')
     }
+
 }
 </script>
 </script>

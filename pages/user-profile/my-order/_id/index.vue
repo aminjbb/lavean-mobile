@@ -1,8 +1,23 @@
 <template>
     <div class="mt-5">
+        <div>
+            <v-row justify="space-between" class="pr-10 pl-8 pb-8 pt-6">
+                <div class="up-titel-section">
+                    <v-row align="center" class="pt-3 pr-2">
+                        <span class="mr-3"> <img class="mt-1" src="~/assets/img/package.svg" alt=""></span>
+                        <span class="t12400 mr-3">جزئیات سفارش</span>
+                    </v-row>
+                </div>
+                <div>
+                    <v-icon @click="$router.go(-1)">
+                        mdi-chevron-left-circle-outline
+                    </v-icon>
+                </div>
+            </v-row>
+        </div>
         <v-row justify="center" align="center">
             <v-col cols="10">
-                <v-row justify="center" class="mt-10">
+                <v-row justify="center" class="mt-3">
 
                     <v-col cols="12">
                         <!-- <div class="container-avatar ma-auto mt-15">
@@ -32,13 +47,13 @@
                         </v-card>
                         <v-row justify="space-between" class="pa-5 mb-1">
                             <div>
-                                <span class="t12400 mx-1">در انتظار تایید</span>
+                                <span class="t12400 mx-1">{{ orderStatus }}</span>
                             </div>
                             <div>
-                                <span class="t12400 mx-1">۲۰,۰۰۰,۰۰۰ تومان</span>
+                                <span class="t12400 mx-1 dana-fa">{{ publicMethod.splitChar(orderFinalPrice) }} تومان</span>
                             </div>
                             <div>
-                                <span class="t12400 mx-1">۱۴۰۱/۱۰/۰۳</span>
+                                <span class="t12400 mx-1 dana-fa">{{ orderDate(orderCreatedAt) }}</span>
                             </div>
 
                         </v-row>
@@ -52,7 +67,7 @@
                                     ارسال فوری در تهران
                                 </span>
                             </v-row>
-                           
+
                             <p class="t14400 Arsenic--text ma-3 mx-10 text-right">
                                 ارسال در بازه زمانی ۹ تا ۱۵ شنبه
                             </p>
@@ -68,7 +83,7 @@
                                 </span>
                             </v-row>
                             <div class="ml-5 mr-8 my-4"><span class="t14400 Arsenic--text  text-right">
-                                    سعادت آباد، خیابان علامه جنوبی، کوچه ۳۴ شرقی، پلاک ۲۷، واحد ۱۶
+                                    {{ orderAddressDetail }}
                                 </span></div>
                         </v-card>
 
@@ -82,11 +97,11 @@
 
                             <div>
                                 <v-row>
-                                    <OrderCard />
+                                    <OrderCard v-for="(card, index) in details" :key="index" :card="card" />
                                 </v-row>
                             </div>
                         </v-card>
-                    
+
                     </v-col>
                 </v-row>
             </v-col>
@@ -100,11 +115,111 @@
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
 import OrderCard from '~/components/Order/OrderCard.vue'
+import { PublicMethod } from '~/store/classes'
 export default {
     components: {
         UserProfileNavigation,
         ModalAddAddres,
         OrderCard
+    },
+    layout: 'empty',
+    data() {
+        return {
+            publicMethod: new PublicMethod
+        }
+    },
+    methods: {
+        orderDate(e) {
+            try {
+                var tempDate = e.split('T');
+                var splitDate = tempDate[0].split('-');
+                return this.publicMethod.gregorian_to_jalali(parseInt(splitDate[0]), parseInt(splitDate[1]), parseInt(splitDate[2]))
+            } catch (error) {
+                return ''
+            }
+        },
+
+    },
+    computed: {
+        order() {
+            return this.$store.getters['get_clientOrder']
+        },
+
+        customer() {
+            try {
+                return this.$store.getters['get_meCustomer']
+            } catch (error) {
+                return ''
+            }
+        },
+
+
+
+        customerName() {
+            try {
+                return this.customer.client.user.firstName
+            } catch (error) {
+                return ''
+            }
+        },
+        customerMobile() {
+            try {
+                return this.customer.client.mobile
+            } catch (error) {
+                return ''
+            }
+        },
+        customerNationalCode() {
+            try {
+                return this.customer.nationalCode
+            } catch (error) {
+                return ''
+            }
+        },
+        details() {
+            try {
+                return this.order.details
+            } catch (error) {
+                return []
+            }
+        },
+
+        orderAddressDetail() {
+            try {
+                return this.order.address.addressDetail
+
+            } catch (error) {
+                return ''
+            }
+        },
+
+        orderStatus() {
+            try {
+                return this.order.currentStatus.name
+            } catch (error) {
+                return ''
+            }
+        },
+        orderFinalPrice() {
+            try {
+                return this.order.finalPrice
+            } catch (error) {
+                return ''
+            }
+        },
+
+        orderCreatedAt() {
+            try {
+                return this.order.createdAt
+            } catch (error) {
+                return ''
+            }
+        }
+    },
+
+    mounted() {
+        this.$store.dispatch('set_clientOrder', this.$route.params.id)
+        this.$store.dispatch('set_meCustomer')
     }
 }
 </script>

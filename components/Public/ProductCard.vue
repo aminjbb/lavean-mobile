@@ -1,6 +1,6 @@
 <template>
     <v-card width="239" rounded="lg" height="369">
-        <v-img height="235" src="https://cdn.vuetifyjs.com/images/cards/cooking.png" class="border-r-15"></v-img>
+        <v-img height="235" :src="productImageCover" class="br-10"></v-img>
         <div class="mt--5 text-center">
                 <v-chip class="pa-2 px-4 plp-colection" v-if="collectionName">
                     <span class="t1440">

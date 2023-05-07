@@ -9,10 +9,10 @@
                     سبد خرید
                 </span>
             </div>
-
+            <v-divider></v-divider>
             <div>
                 <v-row>
-                    <OrderCard />
+                    <OrderCard v-for="(card , index) in cartDetails" :key="index" :card="card"/>
                 </v-row>
             </div>
         </v-card>
@@ -24,6 +24,15 @@ import OrderCard from '~/components/Order/OrderCard.vue'
 export default {
     components: {
         OrderCard
+    },
+    computed: {
+        cartDetails() {
+            try {
+                return this.$store.getters['get_meCustomer'].cartDetails
+            } catch (error) {
+                return []
+            }
+        }
     }
 }
 </script>

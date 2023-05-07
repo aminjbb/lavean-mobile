@@ -1,40 +1,38 @@
 <template>
     <v-col cols="12">
-        <v-divider></v-divider>
+
         <v-row class="my-5">
             <v-col cols="3">
                 <v-img height="76" width="76" class="rounded-lg mr-6"
-                    src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
+                :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9" class="pr-8">
-                <div>
+                <div v-if="collectionName">
                     <v-chip color="collectionGray" class="px-5 my-2">
-                        <span class="t10400"> کالکشن اردیبهشت</span>
+                        <span class="t10400"> {{collectionName}}</span>
                     </v-chip>
 
                 </div>
                 <div>
                     <span class="t10600 Black--text mr-2">
-                        انگشتر ثمین مستطیل سبز
+                      {{productName}}
                     </span>
                 </div>
                 <v-row justify="start" class="mt-1 pr-3">
 
                     <div>
                         <v-chip class="  mt-2 ml-2" outlined pill>
-                            <span class="t10400">  رز گلد</span>
+                            <span class="t10400"> {{weight}}</span>
                         </v-chip>
-                        <v-chip class="   mt-2 ml-2" outlined pill>
-                            <span class="t10400">  رز گلد</span>
-                        </v-chip>
+                     
                     </div>
 
                 </v-row>
                 <v-row justify="end" class="mt-1 pr-5">
 
                     <div class="ml-10 mt-6">
-                        <span class="t12600 Black--text">
-                            ۲۵٬۰۰۰٬۰۰۰
+                        <span class="t12600 Black--text dana-fa">
+                            {{ publicMethod.splitChar(variantPirce) }}
                         </span>
                         <span class="t10400 Black--text">
                             تومان
@@ -46,13 +44,67 @@
 
         </v-row>
         <v-divider></v-divider>
-        
+
 
     </v-col>
 </template>
 <script>
+import { PublicMethod } from '~/store/classes'
 export default {
+    props: {
+        card: ''
+    },
+    data(){
+        return {
+            publicMethod : new PublicMethod()
+        }
+    },
+    computed: {
+        variant() {
+            try {
+                return this.card.variant
+            } catch (error) {
+                return ''
+            }
+        },
 
+        weight() {
+            try {
+                return this.variant.weight
+            } catch (error) {
+                return ''
+            }
+        },
+
+        variantPirce() {
+            return this.variant.price
+        },
+
+        productName() {
+            try {
+                return this.variant.product.name
+            } catch (error) {
+                return ''
+            }
+        },
+
+        imageCover() {
+            try {
+                return process.env.baseUrl + '/media/' + this.variant.product.imageCover.imageThumbnail.medium
+            } catch (error) {
+                return ''
+            }
+        },
+
+        collectionName() {
+            try {
+                return this.variant.product.collection.name
+            } catch (error) {
+                return ''
+            }
+        }
+
+    }
 }
 </script>
 

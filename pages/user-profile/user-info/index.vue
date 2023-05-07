@@ -1,6 +1,22 @@
 <template>
     <v-col cols="12">
-        <v-row justify="center">
+        <div>
+            <v-row justify="space-between" class="pr-10 pl-8 pb-8 pt-6">
+                <div class="up-titel-section">
+                    <v-row align="center" class="pt-3 pr-2">
+                        <span class="mr-3"> <img class="mt-1" src="~/assets/img/info-up.svg" alt=""></span>
+                        <span class="t12400 mr-3">اطلاعات شخصی</span>
+                    </v-row>
+                </div>
+                <div>
+                    <v-icon @click="$router.go(-1)">
+                        mdi-chevron-left-circle-outline
+                    </v-icon>
+                </div>
+            </v-row>
+        </div>
+        <v-divider></v-divider>
+        <v-row justify="center" class="mt-0">
             <div class="user-info-top-section pt-20">
 
                 <v-row justify="center">
@@ -30,7 +46,7 @@
                     </div>
                     <v-card v-if="!editName" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400">{{ userFirstName }}</span>
                             <v-icon @click="editName = true">mdi-square-edit-outline</v-icon>
                         </v-row>
                     </v-card>
@@ -47,14 +63,15 @@
                     </div>
                     <v-card v-if="!editSex" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400" v-if="userSex == 'MALE'">مرد</span>
+                            <span class="t14400" v-else>زن</span>
                             <v-icon @click="editSex = true">mdi-square-edit-outline</v-icon>
                         </v-row>
 
                     </v-card>
                     <div v-else-if="editSex" class="px-5">
                         <v-text-field hide-details color="Black" v-model="sex"
-                            @click:append="sendData({ first_name: name }, 'user/client/me/user/')"
+                            @click:append="sendData({ sex: sex }, 'customer/client/me/')"
                             append-icon="mdi-check-circle-outline" @blur="editSex = false" placeholder="جنسیت"
                             background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
                     </div>
@@ -66,13 +83,13 @@
                     <v-card v-if="!editNationalCode" class="border-r-15 d-flex align-center px-5 mx-4" outlined
                         min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400">{{ userNationalCode }}</span>
                             <v-icon @click="editNationalCode = true">mdi-square-edit-outline</v-icon>
                         </v-row>
                     </v-card>
                     <div v-else-if="editNationalCode" class="px-5">
                         <v-text-field hide-details color="Black" v-model="nationalCode"
-                            @click:append="sendData({ first_name: name }, 'user/client/me/user/')"
+                            @click:append="sendData({ national_code: nationalCode }, 'customer/client/me/')"
                             append-icon="mdi-check-circle-outline" @blur="editNationalCode = false" placeholder="کد ملی"
                             background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
                     </div>
@@ -83,13 +100,13 @@
                     </div>
                     <v-card v-if="!editMobile" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400">{{ userMobile }}</span>
                             <v-icon @click="editMobile = true">mdi-square-edit-outline</v-icon>
                         </v-row>
                     </v-card>
                     <div v-else-if="editMobile" class="px-5">
                         <v-text-field hide-details color="Black" v-model="mobile"
-                            @click:append="sendData({ first_name: name }, 'user/client/me/user/')"
+                            @click:append="sendData({ email: email }, 'user/client/me/user/')"
                             append-icon="mdi-check-circle-outline" @blur="editMobile = false" placeholder="شماره موبایل"
                             background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
                     </div>
@@ -101,16 +118,20 @@
                     <v-card v-if="!editBirthdate" class="border-r-15 d-flex align-center px-5 mx-4" outlined
                         min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400">{{ userBirthdate }}</span>
                             <v-icon @click="editBirthdate = true">mdi-square-edit-outline</v-icon>
                         </v-row>
                     </v-card>
 
                     <div v-else-if="editBirthdate" class="px-5">
                         <v-text-field hide-details color="Black" v-model="birthdate"
-                            @click:append="sendData({ first_name: name }, 'user/client/me/user/')"
-                            append-icon="mdi-check-circle-outline" @blur="editBirthdate = false" placeholder="تاریخ تولد"
-                            background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
+                            @click:append="sendDataBirthdate('user/client/me/client/')"
+                            append-icon="mdi-check-circle-outline" placeholder="تاریخ تولد"
+                            background-color="WhiteSmoke" outlined class="border-r-15" id="birthdate"></v-text-field>
+                        <client-only>
+                            <date-picker v-if="datePicker" v-model="birthdate" format="jYYYY-jMM-jDD"
+                                custom-input="#birthdate" />
+                        </client-only>
                     </div>
                 </v-col>
                 <v-col cols="10" class="py-0">
@@ -119,14 +140,14 @@
                     </div>
                     <v-card v-if="!editEmail" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
-                            <span class="t14400">امین</span>
+                            <span class="t14400">{{ userEmail }}</span>
                             <v-icon @click="editEmail = true">mdi-square-edit-outline</v-icon>
                         </v-row>
                     </v-card>
 
                     <div v-else-if="editEmail" class="px-5">
                         <v-text-field hide-details color="Black" v-model="email"
-                            @click:append="sendData({ first_name: name }, 'user/client/me/user/')"
+                            @click:append="sendData({ email: email }, 'user/client/me/user/')"
                             append-icon="mdi-check-circle-outline" @blur="editEmail = false" placeholder="ایمیل"
                             background-color="WhiteSmoke" outlined class="border-r-15"></v-text-field>
                     </div>
@@ -148,6 +169,7 @@
 
 <script>
 import { AxiosMethods } from "~/store/classes"
+import { PublicMethod } from "~/store/classes"
 export default {
 
     layout: 'empty',
@@ -192,11 +214,98 @@ export default {
             this.axiosMethods.query = query
             this.axiosMethods.endpoint = endPoint
             this.axiosMethods.sendDate(function (response) {
-                this.$store.dispatch('set_meCustomer')
             })
+            this.editName = false
+            this.editSex = false
+            this.editNationalCode = false
+            this.editMobile = false
+            this.editEmail = false
+            this.editBirthdate = false
+            this.$store.dispatch('set_meCustomer')
 
+        },
+        sendDataBirthdate(endPoint) {
+            var publicMethod = new PublicMethod()
+            var birthdateSplit = this.birthdate.split('-')
+            var birthdateGa = publicMethod.jalaliToGregorian(birthdateSplit[0], birthdateSplit[1], birthdateSplit[2])
+            this.axiosMethods.method = 'put'
+            this.axiosMethods.query = { birthdate: birthdateGa }
+            this.axiosMethods.endpoint = endPoint
+            this.axiosMethods.sendDate(function (response) {
+            })
+            this.editName = false
+            this.editSex = false
+            this.editNationalCode = false
+            this.editMobile = false
+            this.editEmail = false
+            this.editBirthdate = false
+            this.$store.dispatch('set_meCustomer')
 
         }
     },
+
+    beforeMount() {
+        if (this.$cookies.get('customer_token')) {
+            this.$store.dispatch('set_meCustomer')
+        }
+        else {
+            this.$router.push('/')
+        }
+    },
+    computed: {
+        datePicker() {
+            if (process.client) {
+                return () => import('vue-persian-datetime-picker')
+            }
+        },
+        userInfo() {
+            return this.$store.getters['get_meCustomer']
+        },
+        userFirstName() {
+            try {
+                return this.userInfo.client.user.firstName
+            } catch (error) {
+                return ''
+            }
+        },
+        userSex() {
+            try {
+                return this.userInfo.sex
+            } catch (error) {
+                return ''
+            }
+        },
+        userNationalCode() {
+            try {
+                return this.userInfo.nationalCode
+            } catch (error) {
+                return ''
+            }
+        },
+        userMobile() {
+            try {
+                return this.userInfo.client.mobile
+            } catch (error) {
+                return ''
+            }
+        },
+        userBirthdate() {
+
+            try {
+                var publicMethod = new PublicMethod()
+                var birthdateSplit = this.userInfo.client.birthdate.split('-')
+                return publicMethod.gregorian_to_jalali(parseInt(birthdateSplit[0]), parseInt(birthdateSplit[1]), parseInt(birthdateSplit[2]))
+            } catch (error) {
+                return ''
+            }
+        },
+        userEmail() {
+            try {
+                return this.userInfo.client.user.username
+            } catch (error) {
+                return ''
+            }
+        }
+    }
 }
 </script>
