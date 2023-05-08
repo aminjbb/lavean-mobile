@@ -6,7 +6,7 @@
       
     </v-row> -->
 
-    <div id="homeProduct">
+    <div id="homeProduct" class="px-5">
 
         <vueper-slides class="no-shadow" :arrows="true" :touchable="true" fade :autoplay="false" :bullets="false"
             :shadow="false">

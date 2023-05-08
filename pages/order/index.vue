@@ -1,5 +1,5 @@
 <template>
-    <div class="rcontainer my-15">
+    <div class="rcontainer mt-15 mb-45">
         <v-row justify="center" align="center">
             <v-col cols="11">
                 <v-row justify="center">
@@ -20,7 +20,8 @@
                                         <span class="t12400 ">مجموع کل تخفیف</span>
                                     </div>
                                     <div>
-                                        <span class="t14400 Black--text dana-fa">{{publicMethod.splitChar(discountPrice)}} <span class="t12400">
+                                        <span class="t14400 Black--text dana-fa">{{ publicMethod.splitChar(discountPrice) }}
+                                            <span class="t12400">
                                                 تومان
                                             </span></span>
                                     </div>
@@ -34,7 +35,8 @@
                                     </div>
 
                                     <div>
-                                        <span class="t12600 GraniteGray--text dana-fa">{{publicMethod.splitChar(cardPrice)}}<span
+                                        <span
+                                            class="t12600 GraniteGray--text dana-fa">{{ publicMethod.splitChar(cardPrice) }}<span
                                                 class="t12400 GraniteGray--text mr-1">تومان</span></span>
                                     </div>
 
@@ -62,7 +64,7 @@
             </v-col>
 
         </v-row>
-
+        <Footer />
     </div>
 </template>
 
@@ -75,9 +77,11 @@ import OrderUserInfo from '~/components/Order/OrderUserInfo.vue'
 import OrderBranche from '~/components/Order/OrderBranche.vue'
 import OrderAddress from '~/components/Order/OrderAddress.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import Footer from '~/components/Public/Footer'
 import axios from 'axios'
 import { PublicMethod } from "~/store/classes";
 export default {
+    layout: 'withOutFooter',
     components: {
         OrderDetail,
         OrderUserInfo,
@@ -85,12 +89,13 @@ export default {
         OrderDelivery,
         OrderBranche,
         OrderAddress,
-        ModalAddAddres
+        ModalAddAddres,
+        Footer
     },
 
-    data(){
+    data() {
         return {
-            publicMethod : new PublicMethod()
+            publicMethod: new PublicMethod()
         }
     },
 

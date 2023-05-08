@@ -35,6 +35,7 @@
     <HomeCategory />
 
     <laveanLevel />
+    <MagHome/>
   </div>
 </template>
 
@@ -46,6 +47,7 @@ import HomeCategory from "~/components/Home/HomeCategory.vue";
 import InfoLavin from "~/components/Home/InfoLavin.vue";
 import GiftSection from "~/components/Home/GiftSection.vue";
 import laveanLevel from "~/components/Home/laveanLevel.vue";
+import MagHome from "~/components/Home/MagHome.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
@@ -58,7 +60,8 @@ export default {
     VueperSlides,
     VueperSlide,
     GiftSection,
-    laveanLevel
+    laveanLevel,
+    MagHome
   },
 
   beforeMount() {

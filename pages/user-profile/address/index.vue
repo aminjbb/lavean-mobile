@@ -21,42 +21,55 @@
                 <v-row justify="center">
                     <v-col cols="12">
                         <div class="container-avatar ma-auto mt-10">
-                            <div class="box-delivery border-r-15 py-3 mt-3" :value="address.id" v-for="(address ) in addresses" :key="address.id">
+                            <div class="box-delivery border-r-15 py-3 mt-3" :value="address.id"
+                                v-for="(address ) in addresses" :key="address.id">
                                 <v-row justify="center" align="center">
                                     <v-col cols="10">
                                         <p class="t14400 Arsenic--text ma-3 my-4 text-right">
-                                            {{address.addressDetail}}
+                                            {{ address.addressDetail }}
                                         </p>
                                     </v-col>
                                     <v-col cols="2">
-                                        <v-icon>mdi-square-edit-outline</v-icon>
+                                        <ModalEditAddress :address="address"/>
+                                     
                                     </v-col>
                                 </v-row>
 
                             </div>
-                       
-                      
+
+
                         </div>
 
                         <v-row justify="end" class="pa-5 pl-8">
-                            <ModalAddAddres />
+                            <v-col cols="8">
+                                <v-btn block color="Black" dark rounded="xl" @click="openMapAddress()">
+                                    <span class="t12400">
+                                        اضافه کردن آدرس جدید
+                                    </span>
+                                </v-btn>
+                            </v-col>
                         </v-row>
                     </v-col>
                 </v-row>
             </v-col>
 
         </v-row>
-
+        <ModalAddAddres />
+        <ModalMapuserAddress />
     </div>
 </template>
 
 <script>
 import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigation.vue'
 import ModalAddAddres from '~/components/Address/ModalAddAddres.vue'
+import ModalMapuserAddress from '~/components/Address/ModalMapuserAddress.vue'
+import ModalEditAddress from '~/components/Address/ModalEditAddress.vue'
 export default {
     components: {
         UserProfileNavigation,
-        ModalAddAddres
+        ModalAddAddres,
+        ModalMapuserAddress,
+        ModalEditAddress
     },
     layout: 'empty',
     computed: {
@@ -75,6 +88,22 @@ export default {
                 return error
             }
         },
+    },
+    methods: {
+        openMapAddress() {
+            localStorage.setItem('modalMap', 'add')
+            this.$store.commit('public/set_addressMapModal', true)
+        }
+    },
+
+    beforeMount() {
+        if (this.$cookies.get('customer_token')) {
+            this.$store.dispatch('set_meCustomer')
+            this.$store.dispatch('public/set_provinces')
+        }
+        else {
+            this.$router.push('/')
+        }
     },
 }
 </script>

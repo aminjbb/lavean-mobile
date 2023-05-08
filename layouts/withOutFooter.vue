@@ -65,21 +65,21 @@
     <v-main>
       <div class="rcontainer">
         <Nuxt />
-        <SearchModal />
+        <SearchModal/>
         <!-- <v-divider class="mt-16"></v-divider> -->
         <!-- <Footer /> -->
       </div>
     </v-main>
-    <Footer />
+
 
   </v-app>
 </template>
-
+  
 <script>
 import Footer from '~/components/Public/Footer'
 import SearchModal from '~/components/Public/SearchModal'
 export default {
-  name: 'DefaultLayout',
+  name: 'WithOutFooter',
   components: {
     Footer,
     SearchModal
@@ -120,8 +120,9 @@ export default {
 
   methods: {
     openSearchModal() {
-      this.$store.commit('public/set_searchModal' , true)
+      this.$store.commit('public/set_searchModal', true)
     }
   }
 }
 </script>
+  

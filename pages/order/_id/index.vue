@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-15 mb-5">
-        <v-row justify="center" align="center">
+    <div class="mt-15 mb-45">
+        <v-row justify="center" align="center" class="mb-10">
 
             <v-col cols="12">
 
@@ -137,7 +137,7 @@
 
 
         </v-row>
-
+        <Footer/>
     </div>
 </template>
 
@@ -146,10 +146,13 @@ import OrderPrice from '~/components/Order/OrderPrice.vue'
 import OrderCard from '~/components/Order/OrderCard.vue'
 import axios from 'axios'
 import { PublicMethod } from "~/store/classes";
+import Footer from '~/components/Public/Footer'
 export default {
+    layout:'withOutFooter',
     components: {
         OrderPrice,
-        OrderCard
+        OrderCard,
+        Footer
     },
     data() {
         return {

@@ -1,5 +1,5 @@
 <template>
-    <div class="my-15">
+    <div class="mt-15 mb-40">
         <div class="px-10">
             <vueper-slides id="pdpCarousel" style="border-radius: 25px;" ref="vueperslides1" :arrows="false"
                 :touchable="false" fade :autoplay="false" :bullets="true" :slide-ratio="1.11">
@@ -219,6 +219,7 @@
                 </v-btn>
             </v-row>
         </div>
+        <Footer />
     </div>
 </template>
 
@@ -230,11 +231,14 @@ import { gql } from 'nuxt-graphql-request';
 import HomeProduct from "~/components/Home/HomeProduct.vue";
 import { PublicMethod } from '~/store/classes'
 import axios from 'axios'
+import Footer from '~/components/Public/Footer'
 export default {
+    layout:'withOutFooter',
     components: {
         VueperSlides,
         VueperSlide,
-        HomeProduct
+        HomeProduct,
+        Footer
 
     },
     async asyncData({ $graphql, app, params, store, route, error }) {

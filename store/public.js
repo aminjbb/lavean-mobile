@@ -8,11 +8,15 @@ export const state = () => ({
     citys: [],
     addressMapModal: false,
     addAddressModal: false,
-    addressOnMap: ''
+    addressOnMap: '',
+    searchModal:false,
 
 })
 
 export const mutations = {
+    set_searchModal(state , bool){
+        state.searchModal = bool
+    },
     set_addAddressModal(state, bool) {
         state.addAddressModal = bool
     },
@@ -70,6 +74,9 @@ export const actions = {
 
 
 export const getters = {
+    get_searchModal(state){
+       return state.searchModal
+    },
     get_addAddressModal(state) {
         return state.addAddressModal
     },

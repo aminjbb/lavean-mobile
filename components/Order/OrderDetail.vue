@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-2">
+    <div class="my-2">
         <v-card outlined rounded="lg pt-3 pb-3">
             <div class="ma-4 d-felx align-content-center">
                 <span class="position__absolute">
@@ -10,9 +10,28 @@
                 </span>
             </div>
             <v-divider></v-divider>
-            <div>
+            <div v-if="cartDetailsLength > 0">
                 <v-row>
-                    <OrderCard v-for="(card , index) in cartDetails" :key="index" :card="card"/>
+                    <OrderCard v-for="(card, index) in cartDetails" :key="index" :card="card" />
+                </v-row>
+            </div>
+            <div v-else>
+                <v-row class="py-10" justify="center">
+                    <img src="~/assets/img/orderNull.png" alt="">
+
+
+                </v-row>
+                <div class="mt-5 text-center">
+                    <span class="t14600">سبد خرید شما خالی است!
+                    </span>
+                </div>
+
+                <v-row class="pt-8 mb-15" justify="center">
+                    <v-btn to="/products" width="159" height="37" color="Black" dark rounded="xl">
+                        <span class="t10600">
+                            بازدید از فروشگاه
+                        </span>
+                    </v-btn>
                 </v-row>
             </div>
         </v-card>
@@ -31,6 +50,13 @@ export default {
                 return this.$store.getters['get_meCustomer'].cartDetails
             } catch (error) {
                 return []
+            }
+        },
+        cartDetailsLength() {
+            try {
+                return this.cartDetails.length
+            } catch (error) {
+                return 0
             }
         }
     }

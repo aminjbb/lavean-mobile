@@ -1,26 +1,28 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="700" eager>
-      <template v-slot:activator="{ on, attrs }">
+    <v-dialog fullscreen v-model="addressMapModal" width="700" eager>
+      <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn @click="mapLoad()" text depressed color="Azure" class="pa-0" v-bind="attrs" v-on="on">
           تغییر نشانی از روی نقشه
         </v-btn>
 
-      </template>
+      </template> -->
 
       <v-card elevation="0">
-        <div class="pa-5">
-
-          <v-col>
-            <v-row class="ma-0" justify="space-between" align="center">
-              <span class="t14600 Black--text">
-                آدرس
-              </span>
-              <v-btn icon @click="dialog = false">
-                <v-icon> mdi-close </v-icon>
-              </v-btn>
-            </v-row>
-          </v-col>
+        <div class="mt-5">
+          <v-row justify="space-between" class="pr-10 pl-8 pb-8 pt-6">
+            <div class="up-titel-section">
+              <v-row align="center" class="pt-3 pr-2">
+                <span class="mr-3"> <img class="mt-1" src="~/assets/img/map-pin-up.svg" alt=""></span>
+                <span class="t12400 mr-3">ثبت آدرس جدید</span>
+              </v-row>
+            </div>
+            <div>
+              <v-icon @click="close()">
+                mdi-chevron-left-circle-outline
+              </v-icon>
+            </div>
+          </v-row>
         </div>
 
         <v-divider></v-divider>
@@ -36,7 +38,7 @@
                 <v-autocomplete v-model="selectAddress" :loading="loadingSearch" :search-input.sync="search"
                   @keyup="searchFunction()" label="جست و جوی نشانی" dense item-text="title" item-value="location"
                   :items="Address" background-color="white" outlined prepend-inner-icon="mdi-magnify"
-                  no-data-text="آدرس مورد نظر را وارد کنید" class="over_map">
+                  no-data-text="آدرس مورد نظر را وارد کنید" class="over_map br-15" color="black">
                   <template v-slot:item="address">
                     <v-col class="pa-0" cols="12">
                       <v-row class="ma-0" align="center">
@@ -64,17 +66,25 @@
                 <v-icon>mdi-crosshairs-gps</v-icon>
               </v-btn>
             </client-only>
-            <img width="40" src="~/assets/img/location1.svg" class="marker_center" alt="" />
+            <img width="40" src="~/assets/img/map-pin.svg" class="marker_center" alt="" />
           </div>
         </v-col>
-        <v-divider></v-divider>
+
         <v-col cols="12">
           <v-row class="ma-0" align="center">
-            <v-btn :loading="loading" @click="getGraphLocation()" depressed color="success" class="px-10"> ثبت نشانی
-            </v-btn>
+
             <span class="t14400 mr-3">سفارش شما به این نشانی ارسال خواهد شد.</span>
           </v-row>
         </v-col>
+        <!-- <v-divider></v-divider> -->
+        <div class="map-add-box mt-8">
+          <v-row class="pt-10" justify="center" align="center">
+            <v-btn :loading="loading" @click="getGraphLocation()" width="292" color="Black" dark rounded="xl"> ثبت آدرس
+              جدید
+            </v-btn>
+
+          </v-row>
+        </div>
       </v-card>
 
 
@@ -111,9 +121,17 @@ export default {
         this.latLng1 = [val.y, val.x];
       }
     },
+    addressMapModal(val) {
+      if (val) {
+        this.mapLoad()
+      }
+    }
   },
 
   methods: {
+    close() {
+      this.$store.commit('public/set_addressMapModal', false)
+    },
     mapLoad() {
       setTimeout(() => {
         this.map = true
@@ -146,7 +164,6 @@ export default {
       let result = text.replace(/'/g, '"');
       const obj = JSON.parse(result);
       this.loadingSearch = false;
-      console.log(obj);
       this.Address = obj.items;
     },
     async getGraphLocation() {
@@ -164,8 +181,15 @@ export default {
         lng: this.latLng1[1],
         address: JSON.parse(result)
       }
-      this.dialog = false
-      this.$store.commit('userProfile/set_addressOnMap', form)
+
+      this.$store.commit('public/set_addressOnMap', form)
+      this.close()
+      if (localStorage.getItem('modalMap') != 'edit') {
+        this.$store.commit('public/set_addAddressModal', true)
+
+      }
+
+
       // this.$store.commit('user/set_mapAddress', form);
       this.loading = false
     },
@@ -187,6 +211,12 @@ export default {
       this.latLng1 = [latlng.lat, latlng.lng];
     },
     // map.on('click', onMapClick);
+  },
+
+  computed: {
+    addressMapModal() {
+      return this.$store.getters['public/get_addressMapModal']
+    }
   },
 
   mounted() {
