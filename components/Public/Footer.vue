@@ -1,5 +1,5 @@
 <template>
-    <div class="green-footer">
+    <div class="green-footer mt-15">
         <div class="footer-social text-center">
             <span class="t14600 MagicMint--text">
                 لاوین در شبکه های اجتماعی

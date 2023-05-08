@@ -20,6 +20,16 @@ import UserProfileNavigation from '~/components/UserProfile/UserProfileNavigatio
 export default {
     components: {
         UserProfileNavigation
+    },
+
+    beforeMount() {
+        if (this.$cookies.get('customer_token')) {
+            this.$store.dispatch('set_meCustomer')
+            this.$store.dispatch('public/set_provinces')
+        }
+        else {
+            this.$router.push('/register')
+        }
     }
 }
 </script>
