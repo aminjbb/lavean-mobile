@@ -8,20 +8,20 @@
 
 
                 <v-col cols="4">
-                    <v-card outlined class="border-r-15 mt-2" min-height="31" max-width="115">
+                    <v-card outlined class="border-r-15 mt-2 pa-0">
                         <v-item-group v-model="available" active-class="btn2_toggle-plp">
-                            <v-item v-slot="{ active, toggle }" value="available">
+                            <v-item v-slot="{ active, toggle }" value="available" class="pa-0 ma-0">
                                 <v-btn depressed rounded class=" white_back border-r-15" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
-                                    <span>موجود</span>
+                                    <span class="t10400">موجود</span>
                                 </v-btn>
                             </v-item>
-                            <v-item v-slot="{ active, toggle }" value="all">
-                                <v-btn depressed rounded class="border-r-15 white_back" small @click="toggle"
+                            <v-item v-slot="{ active, toggle }" value="all" class="pa-0 ma-0 ml-0">
+                                <v-btn depressed rounded class="border-r-15 white_back"  small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
-                                    <span> همه</span>
+                                    <span  class="t10400"> همه</span>
                                 </v-btn>
                             </v-item>
                         </v-item-group>

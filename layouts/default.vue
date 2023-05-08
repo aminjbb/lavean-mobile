@@ -29,7 +29,7 @@
             </v-list-item-content>
           </template>
 
-          <v-list-item v-slot:activator v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px;"
+          <v-list-item v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px;"
             no-action sub-group>
             <v-list-item-action>
               <v-img width="16" :src="item.icon"></v-img>
