@@ -17,6 +17,28 @@
 
       <v-divider></v-divider>
       <v-list class="px-8 mt-5">
+
+        <v-list-group :value="true">
+          <template v-slot:activator>
+            <v-list-item-action>
+              <v-img width="16" :src="require('~/assets/img/shopMenu.svg')"></v-img>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title />
+              فروشگاه
+            </v-list-item-content>
+          </template>
+
+          <v-list-item v-slot:activator v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px;"
+            no-action sub-group>
+            <v-list-item-action>
+              <v-img width="16" :src="item.icon"></v-img>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.name" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact style="height: 26px;">
           <v-list-item-action>
             <v-img width="16" :src="item.icon"></v-img>
@@ -90,11 +112,11 @@ export default {
       drawer: false,
       fixed: false,
       items: [
-        {
-          icon: require('~/assets/img/shopMenu.svg'),
-          title: 'فروشگاه',
-          to: '/products'
-        },
+        // {
+        //   icon: require('~/assets/img/shopMenu.svg'),
+        //   title: 'فروشگاه',
+        //   to: '/products'
+        // },
         {
           icon: require('~/assets/img/magMenu.svg'),
           title: 'لاوین مگ',
@@ -120,8 +142,19 @@ export default {
 
   methods: {
     openSearchModal() {
-      this.$store.commit('public/set_searchModal' , true)
+      this.$store.commit('public/set_searchModal', true)
     }
+  },
+
+  computed: {
+    produCategories() {
+      return this.$store.getters['get_produCategories']
+    }
+  },
+
+  beforeMount() {
+
+    this.$store.dispatch('set_produCategories')
   }
 }
 </script>
