@@ -591,6 +591,11 @@ ol li {
   background: #DFDFDF;
 }
 
+.scroll {
+  overflow-x: scroll !important;
+
+}
+
 
 
 /* .card-hover:hover .card-image{

@@ -428,7 +428,7 @@ export const actions = {
 
     const query = gql`
         query{
-            clientProductCategories{
+            clientProductCategories(parent_Isnull:true){
               results{
                 id,name,image,url
                 subCategories{

@@ -50,7 +50,7 @@ export default {
     },
 
     beforeMount() {
-        this.$store.dispatch('set_products', '')
+        this.$store.dispatch('set_products', this.productFilter.query_maker_graph(this.$route))
         this.$store.dispatch('set_collections')
 
     },

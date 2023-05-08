@@ -53,6 +53,7 @@
 import { ProductListFilter } from "~/store/classes"
 import CollectionFillterModal from '~/components/Plp/CollectionFillterModal'
 import PlpSortSheet from '~/components/Plp/PlpSortSheet'
+import { debounce } from "debounce";
 export default {
 
     components: {
@@ -97,12 +98,12 @@ export default {
             this.productFilter.sort = this.sort
             this.$router.push("/products?" + this.productFilter.query_maker());
         },
-        filterPrice() {
+        filterPrice: debounce(function (e)  {
             this.productFilter.min_price = this.value[0]
             this.productFilter.max_price = this.value[1]
 
             this.$router.push("/products?" + this.productFilter.query_maker());
-        },
+        }, 1000),
         filterAvailable() {
             if (this.available == 'available') {
                 this.productFilter.available = 'available'

@@ -1,11 +1,6 @@
 <template>
     <v-dialog fullscreen v-model="dialog" width="500">
-        <template v-slot:activator="{ on, attrs }">
 
-            <span class="">
-                <img width="18" src="~/assets/img/searchicon.svg" alt="" v-bind="attrs" v-on="on">
-            </span>
-        </template>
 
         <v-card>
             <div>

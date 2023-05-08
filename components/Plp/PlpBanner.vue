@@ -12,7 +12,7 @@
                 <v-row justify="end" align="center" class="height-percent-100 mt--20 mt-2">
                     <v-col cols="6">
                         <v-btn height="27" width="61" class="px-15" color="Cultured" dark rounded="xl">
-                            <span class="t12400 VampireBlack--text">
+                            <span class="t12400 black--text">
                                 شروع کنیم
                             </span>
                         </v-btn>
