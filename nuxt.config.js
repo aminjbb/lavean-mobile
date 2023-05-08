@@ -5,11 +5,12 @@ export default {
   ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - فروشگاه لاوین',
-    title: '',
+    titleTemplate: '%s - laveen-mobile-app',
+    title: 'laveen-mobile-app',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -49,11 +50,16 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/axios",
-    'nuxt-leaflet'
+    '@nuxtjs/pwa',
+    'nuxt-leaflet',
   ],
 
-
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      lang: 'en'
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
