@@ -20,10 +20,14 @@ export const state = () => ({
   myOrders: [],
   clientPayment: '',
   clientBanners: [],
-  produCategoriesHome: []
+  produCategoriesHome: [],
+  searchProduct: []
 })
 
 export const mutations = {
+  set_searchProduct(state, obj) {
+    state.searchProduct = obj
+  },
   set_produCategoriesHome(state, obj) {
     state.produCategoriesHome = obj
   },
@@ -91,6 +95,39 @@ export const mutations = {
 
 
 export const actions = {
+  async set_searchProduct({ commit }, name) {
+
+    const query = gql`
+        query{
+            clientProducts(limit:10 , name_Icontains:"`+ name + `") {
+                totalCount
+                results {
+                  id,
+                  name,
+                  url,
+                  discountPercent
+                  collection{
+                    name,
+                    url,
+                  }
+                  bestVariant{
+                      id,weight,price
+                  }
+                  imageCover{
+                    imageThumbnail{
+                      medium
+                    }
+                  },
+                  mainCategory{
+                    name,url,id
+                  },
+
+                }
+              }
+          } `;
+    const products = await this.$graphql.default.request(query, {});
+    commit('set_searchProduct', products.clientProducts.results);
+  },
   async set_produCategoriesHome({ commit }, form) {
 
     const query = gql`
@@ -511,6 +548,9 @@ export const actions = {
 }
 
 export const getters = {
+  get_searchProduct(state) {
+    return state.searchProduct
+  },
   get_produCategoriesHome(state) {
     return state.produCategoriesHome
   },

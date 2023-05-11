@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-15 mb-40">
+    <div class="mt-15 mb-45">
         <div class="px-10">
             <vueper-slides id="pdpCarousel" style="border-radius: 25px;" ref="vueperslides1" :arrows="false"
                 :touchable="false" fade :autoplay="false" :bullets="true" :slide-ratio="1.11">
