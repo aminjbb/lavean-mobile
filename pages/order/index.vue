@@ -64,7 +64,6 @@
             </v-col>
 
         </v-row>
-        <Footer />
     </div>
 </template>
 

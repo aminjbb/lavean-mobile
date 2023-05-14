@@ -24,8 +24,8 @@
         </v-container>
       </v-img>
       <v-row justify="center" align="center">
-        <v-btn width="130" height="35" class="px-15 mt--20" color="WhiteSmoke" dark rounded="xl">
-          <span class="t14400 VampireBlack--text">
+        <v-btn width="130" height="35" class="px-15 mt--20" color="Cultured" dark rounded="xl">
+          <span class="t14400 Gray02--text">
             شروع کنیم
           </span>
         </v-btn>

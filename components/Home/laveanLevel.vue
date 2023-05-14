@@ -4,13 +4,6 @@
 
         <vueper-slides class="no-shadow" :arrows="false" :touchable="true" fade :autoplay="false" :bullets="false"
             :shadow="false">
-            <template #arrow-left>
-                <v-icon>mdi-chevron-left-circle-outline</v-icon>
-            </template>
-
-            <template #arrow-right>
-                <v-icon>mdi-chevron-right-circle-outline</v-icon>
-            </template>
             <vueper-slide >
                 <template #content>
                     <div class="lavean-level-box pt-10">

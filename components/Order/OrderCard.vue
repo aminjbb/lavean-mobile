@@ -3,28 +3,27 @@
 
         <v-row class="my-5">
             <v-col cols="3">
-                <v-img height="76" width="76" class="rounded-lg mr-6"
-                :src="imageCover"></v-img>
+                <v-img height="76" width="76" class="rounded-lg mr-6" :src="imageCover"></v-img>
             </v-col>
             <v-col cols="9" class="pr-8">
                 <div v-if="collectionName">
                     <v-chip color="collectionGray" class="px-5 my-2">
-                        <span class="t10400"> {{collectionName}}</span>
+                        <span class="t10400"> {{ collectionName }}</span>
                     </v-chip>
 
                 </div>
                 <div>
                     <span class="t10600 Black--text mr-2">
-                      {{productName}}
+                        {{ productName }}
                     </span>
                 </div>
                 <v-row justify="start" class="mt-1 pr-3">
 
                     <div>
                         <v-chip class="  mt-2 ml-2" outlined pill>
-                            <span class="t10400"> {{weight}}</span>
+                            <span class="t10400"> {{ weight }}</span>
                         </v-chip>
-                     
+
                     </div>
 
                 </v-row>
@@ -41,9 +40,9 @@
 
                 </v-row>
             </v-col>
+            <v-divider v-if="length > 1"></v-divider>
 
         </v-row>
-        <v-divider></v-divider>
 
 
     </v-col>
@@ -52,11 +51,12 @@
 import { PublicMethod } from '~/store/classes'
 export default {
     props: {
-        card: ''
+        card: '',
+        length: 0
     },
-    data(){
+    data() {
         return {
-            publicMethod : new PublicMethod()
+            publicMethod: new PublicMethod()
         }
     },
     computed: {

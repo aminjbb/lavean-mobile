@@ -2,7 +2,7 @@
     <v-container class="mt-10 position__relative">
 
         <div class="info-home-box d-flex justify-center">
-            <v-card min-height="367"  width="335" color="LightSilver" class="LightSilver-box pt-15 px-10 t14400 br-45" rounded="xl"
+            <v-card min-height="367"  width="335" color="Cultured" class="LightSilver-box pt-15 px-10 t14400 br-45" rounded="xl"
                 outlined>
                 <span class="position__absolute t18600 why-lavin mr-6">چرا از لاوین <span class="white--text">
                         خرید میکنند؟

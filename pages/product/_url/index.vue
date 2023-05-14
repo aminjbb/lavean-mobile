@@ -32,16 +32,16 @@
                     <div class="w-100 pdp-form" id="mySelect">
                         <v-select height="40" append-icon="mdi-chevron-down" v-model="changeVariant"
                             background-color="white" @change="setBestvariant()" :disabled="!bestVariant" :items="variants"
-                            dense label="وزن" outlined></v-select>
+                            dense :label="title" outlined></v-select>
                     </div>
                 </v-col>
 
             </v-row>
         </div>
 
-        <v-row justify="center">
+        <v-row justify="center ">
             <div class=" info-pdp-box">
-                <v-row justify="center" align="center" class="px-8">
+                <v-row justify="center" align="center" class="px-10 pt-1">
                     <v-col cols="4">
                         <v-row justify="center" class="mt-2">
                             <!-- <div>
@@ -70,7 +70,7 @@
                         </v-row>
                     </v-col>
                 </v-row>
-                <v-row justify="center" align="center" class="px-8">
+                <v-row justify="center" align="center" class="px-10 ">
                     <v-col cols="4" class="py-1">
                         <v-row justify="center" class="mt-2">
                             <!-- <div>
@@ -145,24 +145,20 @@
             </div>
 
             <v-row justify="center" class="my-3">
-                <div class="branch-header">
-                    <v-row class="pa-5 px-10" justify="space-between" align="center">
-                        <span class="text-center t12400 Gray02--text">وزن</span>
-                        <span class="text-center t12400 Gray02--text">نام فروشگاه</span>
-                    </v-row>
+                <div class="branch-header px-9">
+                    <span class="text-center t12400 Gray02--text">وزن</span>
+                    <span class="text-center t12400 Gray02--text">نام فروشگاه</span>
                 </div>
             </v-row>
             <v-row justify="center" class="my-3" v-for="(branche, index) in branches" :key="index">
-                <div class="branch-body">
-                    <v-row class="pa-5 px-10" justify="space-between" align="center">
-                        <span class="text-center t12400 Gray02--text">{{ branche.variant.weight }}</span>
-                        <span class="text-center t12400 Gray02--text">{{ branche.branch.name }}</span>
-                    </v-row>
+                <div class="branch-body px-9">
+                    <span class="text-center t12400 Gray02--text">{{ branche.variant.weight }}</span>
+                    <span class="text-center t12400 Gray02--text">{{ branche.branch.name }}</span>
                 </div>
             </v-row>
         </div>
 
-        <div class="my-10">
+        <div class="my-10 mb-15">
             <div class="text-center">
                 <span class="t14600 Gray02--text">مناسب شما!</span>
             </div>
@@ -214,12 +210,12 @@
             <v-row justify="center" class="mt-8">
                 <v-btn to="/products" rounded="xl" color="black" width="292" height="39">
                     <span class="t12400 white--text">
-                        بازدید از فروشگاه
+                        بازگشت به فروشگاه
                     </span>
                 </v-btn>
             </v-row>
         </div>
-        <Footer />
+        <Footer :footer="false"/>
     </div>
 </template>
 
@@ -233,7 +229,7 @@ import { PublicMethod } from '~/store/classes'
 import axios from 'axios'
 import Footer from '~/components/Public/Footer'
 export default {
-    layout:'withOutFooter',
+    layout: 'withOutFooter',
     components: {
         VueperSlides,
         VueperSlide,
@@ -307,7 +303,8 @@ export default {
         return {
             product: '',
             publicMethod: new PublicMethod(),
-            loading :false
+            loading: false,
+            title: ''
         }
     },
     beforeMount() {
@@ -389,7 +386,7 @@ export default {
                 return []
             }
         },
-        variantId(){
+        variantId() {
             try {
                 return this.bestVariant.id
             } catch (error) {
@@ -450,7 +447,11 @@ export default {
 
     mounted() {
         if (this.bestVariant) {
+            this.title = 'وزن'
             this.changeVariant = this.bestVariant.id
+        }
+        else {
+            this.title = 'ناموجود'
         }
 
     }

@@ -16,8 +16,8 @@
                                 </span>
                             </div>
                             <v-divider></v-divider>
-                            <div class="px-5 mt-5 position__relative" id="giftBoxText">
-                                <v-text-field color="black" dense prepend-inner-icon="mdi-gift-outline" height="56"
+                            <div class="px-5 mt-5 position__relative">
+                                <v-text-field color="black" dense prepend-inner-icon="mdi-gift-outline" height="39"
                                     background-color="white" outlined class="border-r-15" placeholder="کد هدیه را وارد کنید"
                                     clearable></v-text-field>
                                 <v-btn color="DeepGreen" width="81" height="39" class="gift-btn" dark>
@@ -27,7 +27,7 @@
                                 </v-btn>
                             </div>
                         </v-card>
-                        <v-card outlined class="mt-5 pt-3  br-15" width="1200" min-height="494">
+                        <v-card outlined class="mt-5 pt-3  br-15" width="1200" >
                             <div class="ma-4 d-felx align-content-center">
                                 <span class="position__absolute">
                                     <img src="~/assets/img/ShoppingCartSimple.svg" alt="">
@@ -72,7 +72,7 @@
 
                                 <v-card class="br-15 mt-5 pa-3" outlined>
                                     <v-row justify="space-between" class="ma-2">
-                                        <div class="position__absolute mt-1">
+                                        <div class="position__absolute">
                                             <img src="~/assets/img/map-pin.svg" alt="">
                                         </div>
                                         <span class="t10400 Gray_02--text mr-8 dana-fa">
@@ -82,7 +82,7 @@
                                 </v-card>
                                 <div>
                                     <v-row>
-                                        <OrderCard v-for="(card, index) in details" :key="index" :card="card" />
+                                        <OrderCard v-for="(card, index) in details" :key="index" :card="card" :length="detailsLength"/>
 
                                     </v-row>
                                 </div>
@@ -162,6 +162,13 @@ export default {
     },
 
     computed: {
+        detailsLength(){
+            try {
+                return this.details.length
+            } catch (error) {
+                return 0
+            }
+        },
         order() {
             return this.$store.getters['get_clientOrder']
         },

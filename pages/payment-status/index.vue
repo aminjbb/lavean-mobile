@@ -115,7 +115,7 @@
                                 </v-card>
                                 <div>
                                     <v-row>
-                                        <OrderCard v-for="(card, index) in details" :key="index" :card="card" />
+                                        <OrderCard v-for="(card, index) in details" :key="index" :card="card"  :length="detailsLength"/>
 
                                     </v-row>
                                 </div>
@@ -210,6 +210,14 @@ export default {
                 return this.order.details
             } catch (error) {
                 return []
+            }
+        },
+
+        detailsLength(){
+            try {
+                return this.details.length
+            } catch (error) {
+                return 0
             }
         },
 

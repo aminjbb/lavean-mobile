@@ -12,7 +12,7 @@ export default (ctx) => {
       dark: false,
       themes: {
         light: {
-          primary: "#12924F",
+          primary: "#ACE7C4",
           primary2: "#2AC59F",
           secondary: "#21313C",
           Secondary2: "#00654C",

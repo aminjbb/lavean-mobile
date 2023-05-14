@@ -1,6 +1,6 @@
 <template>
     <div class="my-2">
-        <v-card outlined rounded="lg pt-3 pb-3">
+        <v-card outlined class="br-15">
             <div class="ma-4 d-felx align-content-center">
                 <span class="position__absolute">
                     <img src="~/assets/img/ShoppingCartSimple.svg" alt="">
@@ -12,7 +12,7 @@
             <v-divider></v-divider>
             <div v-if="cartDetailsLength > 0">
                 <v-row>
-                    <OrderCard v-for="(card, index) in cartDetails" :key="index" :card="card" />
+                    <OrderCard v-for="(card, index) in cartDetails" :key="index" :card="card" :length="cartDetailsLength"/>
                 </v-row>
             </div>
             <div v-else>
@@ -45,6 +45,7 @@ export default {
         OrderCard
     },
     computed: {
+        
         cartDetails() {
             try {
                 return this.$store.getters['get_meCustomer'].cartDetails

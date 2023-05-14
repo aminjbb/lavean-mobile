@@ -49,8 +49,8 @@
                                     </v-row>
                                 </v-card>
                             </v-row>
-                            <v-row justify="space-between" class="mt-8 pr-14 pl-12">
-                                <span class="t12400 ">
+                            <v-row justify="space-between" class="mt-8 pr-14 pl-8">
+                                <span class="t12400 ml-8 mr-2">
                                     {{ order.id }}
                                 </span>
                                 <span class="t12400">
@@ -66,18 +66,19 @@
                                     <v-icon>mdi-dots-vertical</v-icon>
                                 </span> -->
                             </v-row>
-                            <v-row justify="center" class="mt-8 ">
-                                <div class="mx-2" v-for="(variant, i) in order.details" :key="i">
+                            <v-row justify="start" class="mt-6 mr-7">
+                                <div class="mx-2 mt-2" v-for="(variant, i) in order.details" :key="i">
                                     <v-img height="55" width="55" :src="productImage(variant)" class="border-r-15"></v-img>
+                                   
                                 </div>
-
+                                
                             </v-row>
 
-                            <v-row justify="space-between mt-10 pl-5 pr-15">
-                                <span class="t12400">
+                            <v-row justify="space-between mt-5 pl-5 pr-13">
+                                <span class="t12400 mt-5">
                                     ۲۰,۰۰۰,۰۰۰ تومان
                                 </span>
-                                <v-btn :to="'/user-profile/my-order/' + order.id" icon class="t12400" >
+                                <v-btn :to="'/user-profile/my-order/' + order.id" icon class="t12400 mt-3" >
                                     <v-icon>mdi-dots-vertical</v-icon>
                                 </v-btn>
 

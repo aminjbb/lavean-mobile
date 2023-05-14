@@ -1,48 +1,51 @@
 <template>
     <div>
         <v-row>
-            <div class="d-flex">
-                <v-col cols="4" class="pt-5 pl-0 pr-8">
-                    <CollectionFillterModal />
-                </v-col>
+            <v-col cols="4" class="pt-5 pl-0 pr-8">
+                <CollectionFillterModal />
+            </v-col>
 
 
-                <v-col cols="4">
-                    <v-card outlined class="border-r-15 mt-2 pa-0">
+            <v-col cols="4">
+                <v-row justify="center" class="pt-3">
+                    <v-card outlined class="border-r-15 mt-2 pa-0" width="106" height="31">
                         <v-item-group v-model="available" active-class="btn2_toggle-plp">
                             <v-item v-slot="{ active, toggle }" value="available" class="pa-0 ma-0">
-                                <v-btn depressed rounded class=" white_back border-r-15" small @click="toggle"
+                                <v-btn height="31" depressed rounded class=" white_back border-r-15" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
                                     <span class="t10400">موجود</span>
                                 </v-btn>
                             </v-item>
                             <v-item v-slot="{ active, toggle }" value="all" class="pa-0 ma-0 ml-0">
-                                <v-btn depressed rounded class="border-r-15 white_back"  small @click="toggle"
+                                <v-btn height="31" depressed rounded class="border-r-15 white_back" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
-                                    <span  class="t10400"> همه</span>
+                                    <span class="t10400"> همه</span>
                                 </v-btn>
                             </v-item>
                         </v-item-group>
                     </v-card>
-                </v-col>
+                </v-row>
+            </v-col>
 
-                <v-col cols="4" class="pt-5 pr-0 pl-8">
-                  <PlpSortSheet/>
-                </v-col>
-            </div>
+            <v-col cols="4" class="pt-5 pr-0 pl-8">
+                <PlpSortSheet />
+            </v-col>
         </v-row>
 
-        <v-row justify="center" align="center" class="filter-price-box  mt-1-5  mx-7 mt-5">
-            <span class="t10400"> {{ splitChar(value[0]) }} تومان</span>
+        <v-row justify="space-between" align="center" class="filter-price-box  mt-1-5  mx-5 mt-5 px-2">
+            <div style="width:70px;" class="text-left">
+                <span class="t10400 dana-fa"> {{ splitChar(value[0]) }} تومان</span>
+            </div>
 
             <div class="position__relative">
                 <v-range-slider track-color="MagicMint" color="DeepGreen" class="price-filter-input " v-model="value"
                     min="0" max="20000000" step="50000"> </v-range-slider>
             </div>
-
-            <span class="t10400 "> {{ splitChar(value[1]) }} تومان</span>
+            <div style="width:70px;">
+                <span class="t10400 dana-fa"> {{ splitChar(value[1]) }} تومان</span>
+            </div>
 
 
         </v-row>
@@ -57,7 +60,7 @@ import { debounce } from "debounce";
 export default {
 
     components: {
-        CollectionFillterModal,PlpSortSheet
+        CollectionFillterModal, PlpSortSheet
     },
     data() {
         return {
@@ -98,7 +101,7 @@ export default {
             this.productFilter.sort = this.sort
             this.$router.push("/products?" + this.productFilter.query_maker());
         },
-        filterPrice: debounce(function (e)  {
+        filterPrice: debounce(function (e) {
             this.productFilter.min_price = this.value[0]
             this.productFilter.max_price = this.value[1]
 

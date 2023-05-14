@@ -47,7 +47,7 @@
                     <v-card v-if="!editName" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400">{{ userFirstName }}</span>
-                            <v-icon @click="editName = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg" @click="editName = true"/>
                         </v-row>
                     </v-card>
                     <div v-else-if="editName" class="px-5">
@@ -65,7 +65,7 @@
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400" v-if="userSex == 'MALE'">مرد</span>
                             <span class="t14400" v-else>زن</span>
-                            <v-icon @click="editSex = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg" @click="editSex = true"/>
                         </v-row>
 
                     </v-card>
@@ -84,7 +84,7 @@
                         min-height="55">
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400">{{ userNationalCode }}</span>
-                            <v-icon @click="editNationalCode = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg"  @click="editNationalCode = true"/>
                         </v-row>
                     </v-card>
                     <div v-else-if="editNationalCode" class="px-5">
@@ -101,7 +101,7 @@
                     <v-card v-if="!editMobile" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400">{{ userMobile }}</span>
-                            <v-icon @click="editMobile = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg"  @click="editMobile = true"/>
                         </v-row>
                     </v-card>
                     <div v-else-if="editMobile" class="px-5">
@@ -119,7 +119,7 @@
                         min-height="55">
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400">{{ userBirthdate }}</span>
-                            <v-icon @click="editBirthdate = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg"  @click="editBirthdate = true"/>
                         </v-row>
                     </v-card>
 
@@ -141,7 +141,7 @@
                     <v-card v-if="!editEmail" class="border-r-15 d-flex align-center px-5 mx-4" outlined min-height="55">
                         <v-row justify="space-between" class="px-3">
                             <span class="t14400">{{ userEmail }}</span>
-                            <v-icon @click="editEmail = true">mdi-square-edit-outline</v-icon>
+                            <img src="~/assets/img/edit.svg" @click="editEmail = true"/>
                         </v-row>
                     </v-card>
 

@@ -11,11 +11,11 @@
         <vueper-slides class="no-shadow" :arrows="true" :touchable="true" fade :autoplay="false" :bullets="false"
             :shadow="false">
             <template #arrow-left>
-                <v-icon>mdi-chevron-left-circle-outline</v-icon>
+                <img src="~/assets/img/leftProductList.svg" alt="">
             </template>
 
             <template #arrow-right>
-                <v-icon>mdi-chevron-right-circle-outline</v-icon>
+                <img src="~/assets/img/rigthProductList.svg" alt="">
             </template>
             <vueper-slide v-for="(product, index) in homeProducts " :key="index">
                 <template #content>

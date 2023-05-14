@@ -1,22 +1,24 @@
 <template>
-    <div class="green-footer mt-15">
-        <div class="footer-social text-center">
+    <div class="green-footer mt-15" :class="!footer ? 'pt-2' : ''">
+        <div class="mt-14 text-center">
             <span class="t14600 MagicMint--text">
                 لاوین در شبکه های اجتماعی
             </span>
-            <div class="mt-3">
-                <span class="mx-1">
-                    <img src="~/assets/img/insta.svg" alt="">
-                </span>
-                <span class="mx-1">
-                    <img src="~/assets/img/facebook.svg" alt="">
-                </span>
 
-                <span class="mx-1">
-                    <img src="~/assets/img/telegram.svg" alt="">
-                </span>
-            </div>
         </div>
+        <v-row justify="center" class="mt-3">
+            <span class="mx-1">
+                <v-img width="31" height="31" :src="require('~/assets/img/InstagramLogo.svg')"></v-img>
+            </span>
+            <span class="mx-1">
+                <v-img width="33" height="33" :src="require('~/assets/img/FacebookLogo.svg')"></v-img>
+            </span>
+
+            <span class="mx-1">
+                <v-img width="30" height="31" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
+            </span>
+
+        </v-row>
         <div class="black-footer pt-10">
             <div class="text-center">
                 <span class="t12600 MagicMint--text">
@@ -64,6 +66,6 @@
 
 <script>
 export default {
-
+    props: { footer: true }
 }
 </script>

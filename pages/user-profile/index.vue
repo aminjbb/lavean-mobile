@@ -22,6 +22,8 @@ export default {
         UserProfileNavigation
     },
 
+    layout: 'withOutFooter',
+
     beforeMount() {
         if (this.$cookies.get('customer_token')) {
             this.$store.dispatch('set_meCustomer')

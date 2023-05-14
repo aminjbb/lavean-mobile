@@ -18,28 +18,30 @@
       <v-divider></v-divider>
       <v-list class="px-8 mt-5">
 
-        <v-list-group :value="true">
+        <v-list-group >
           <template v-slot:activator>
             <v-list-item-action>
               <v-img width="16" :src="require('~/assets/img/shopMenu.svg')"></v-img>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title />
-              فروشگاه
+            <span class="Gray02--text">  فروشگاه</span>
             </v-list-item-content>
           </template>
 
-          <v-list-item v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px;"
+          <v-list-item class="my-2" active-class="primary" v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px; ; border-radius: 13px;"
             no-action sub-group>
             <v-list-item-action>
               <v-img width="16" :src="item.icon"></v-img>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title v-text="item.name" />
+              <v-list-item-title>
+                <span class="Gray02--text">  {{item.name}}</span>
+                </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact style="height: 26px;">
+        <v-list-item class="my-2" active-class="primary" v-for="(item, i) in items" :key="i" :to="item.to" router exact style="height: 26px; border-radius: 13px;" v-model="page">
           <v-list-item-action>
             <v-img width="16" :src="item.icon"></v-img>
           </v-list-item-action>
@@ -111,6 +113,8 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      page:'',
+      cat:'',
       items: [
         // {
         //   icon: require('~/assets/img/shopMenu.svg'),
@@ -132,6 +136,11 @@ export default {
           title: 'تماس با ما',
           to: '/contact-us'
         },
+        {
+          icon: require('~/assets/img/laveanMenu.svg'),
+          title: 'صفحه اصلی',
+          to: '/'
+        },
       ],
       miniVariant: false,
       right: true,
@@ -148,7 +157,24 @@ export default {
 
   computed: {
     produCategories() {
-      return this.$store.getters['get_produCategories']
+      try {
+        var cat = [
+          {
+            name:'همه',
+            id:''
+          }
+        ]
+        this.$store.getters['get_produCategories'].forEach(element => {
+          var form = {
+            name : element.name ,
+            id : element.id
+          }
+          cat.push(form)
+        });
+        return cat
+      } catch (error) {
+        return []
+      } 
     }
   },
 

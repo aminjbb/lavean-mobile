@@ -43,7 +43,7 @@
                                         {{branche.name}}
                                     </span>
                                 </div>
-                                <div  class="pt-4 pr-4 d-flex">
+                                <div  class="pt-4 px-4  d-flex">
                                     <span>
                                         <v-img class="mt-1 ml-2" width="15" height="15" :src="require('~/assets/img/map-pin.svg')"></v-img>
                                     </span>

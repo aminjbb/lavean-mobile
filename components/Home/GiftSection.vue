@@ -13,8 +13,8 @@
                             با لاوین هدیه بده!
                         </span>
                     </div>
-                    <div class="pl-10">
-                        <span class="t10600 black--text">
+                    <div class="pl-15 ">
+                        <span class="t10400 black--text">
                             از لاوین هدیه ارزشمند برای روز خاصت بخر و خوشحالش کن!
                         </span>
                     </div>

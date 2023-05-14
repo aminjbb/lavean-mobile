@@ -23,7 +23,7 @@
                         <span class="t12400 SpanishGray--text">۲۸ تیرماه ۱۴۰۱</span>
                     </div>
                     <div class=" pl-5">
-                        <v-icon color="#616161">mdi-chevron-left-circle-outline</v-icon>
+                       <img src="~/assets/img/CaretCircleLeftMag.svg" alt="">
                     </div>
                 </v-row>
             </v-col>

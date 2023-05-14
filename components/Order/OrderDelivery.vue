@@ -1,6 +1,6 @@
 <template>
     <div class="mt-2">
-        <v-card outlined rounded="lg pt-3 pb-3">
+        <v-card outlined class="br-15">
             <div class="ma-4">
                 <span class="position__absolute">
                     <img src="~/assets/img/Truck.svg" alt="">
