@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomeMainbanner />
+    <!-- <HomeMainbanner /> -->
     <!-- <div class="position__relative">
       <v-divider class="ma-6"></v-divider>
       <div class="position__absolute sptial-sales-box text-center">
