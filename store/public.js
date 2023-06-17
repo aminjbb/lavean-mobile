@@ -1,4 +1,3 @@
-import axios from 'axios'
 import cookies from 'vue-cookies'
 import { gql } from 'nuxt-graphql-request';
 

@@ -6,7 +6,7 @@
             </span>
 
         </div>
-        <v-row justify="center" class="mt-3">
+        <div class="custom-row mt-3">
             <span class="mx-1">
                 <v-img width="31" height="31" :src="require('~/assets/img/InstagramLogo.svg')"></v-img>
             </span>
@@ -18,7 +18,7 @@
                 <v-img width="30" height="31" :src="require('~/assets/img/TelegramLogo.svg')"></v-img>
             </span>
 
-        </v-row>
+        </div>
         <div class="black-footer pt-10">
             <div class="text-center">
                 <span class="t12600 MagicMint--text">
@@ -41,19 +41,18 @@
                 </span>
             </div>
 
-            <v-row justify="center" align="center" class="mt-5">
-                <div>
+            <div class="custom-row mt-5">
+                <div class="text-center">
                     <v-img width="98" height="24" :src="require('~/assets/img/darkLogo.png')"></v-img>
                 </div>
-
-            </v-row>
-            <v-row justify="center" align="center">
+            </div>
+            <div class="custom-row mt-5">
                 <div class="mt-5">
                     <v-img width="22" height="22" :src="require('~/assets/img/roshaklogo.png')"></v-img>
                 </div>
 
 
-            </v-row>
+            </div>
 
             <div class="text-center mt-5">
                 <span class="t10400 white--text">

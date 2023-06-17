@@ -1,6 +1,6 @@
 <template>
     <div class="my-5">
-        <v-row justify="center" align="center" class="px-2">
+        <div class="px-2 custom-row">
             <v-col cols="5">
                 <v-divider></v-divider>
             </v-col>
@@ -12,9 +12,9 @@
             <v-col cols="5">
                 <v-divider></v-divider>
             </v-col>
-        </v-row>
-
-        <v-row justify="center" class="my-5">
+        </div>
+ 
+        <div class="my-5 custom-row">
 
             <div class="mag-home-card">
                 <v-row justify="center" class="mt-10">
@@ -31,7 +31,7 @@
 
                 </div>
             </div>
-        </v-row>
+        </div>
     </div>
 </template>
 

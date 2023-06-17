@@ -1,4 +1,3 @@
-import axios from 'axios'
 import cookies from 'vue-cookies'
 import { gql } from 'nuxt-graphql-request';
 
@@ -490,7 +489,7 @@ export const actions = {
                   discountPercent
                   collection{
                     name,
-                    url,
+                  
                   }
                   bestVariant{
                       id,weight,price

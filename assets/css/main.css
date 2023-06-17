@@ -1589,8 +1589,8 @@ header {
   border-radius: 20px;
   background: #F5F5F5;
   display: flex;
-  justify-content:space-between;
-  align-items:center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .branch-body {
@@ -1599,8 +1599,8 @@ header {
   border: 1px solid #EDEDED;
   border-radius: 20px;
   display: flex;
-  justify-content:space-between;
-  align-items:center;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
@@ -1697,12 +1697,21 @@ header {
 
 }
 
-.gold-price-box {
+.gold-price-box-1 {
   position: absolute;
+
+  display: flex;
+  justify-content: center;
+  top: 78px;
+  left: 0px;
+  right: 0px;
+}
+
+.gold-price-box {
+  position: relative;
   width: 216px;
   height: 26px;
-  left: 90px;
-  top: 78px;
+
 
   background: #FFFFFF;
   border: 1px solid #F5F6F7;
@@ -1711,8 +1720,8 @@ header {
 
 .gold-price-box-img {
   position: absolute;
-  left: 83px;
-  top: 81px;
+  left: 0px;
+  top: 3px;
   z-index: 1;
 }
 
@@ -1837,20 +1846,37 @@ header {
   border-radius: 8px;
 }
 
-#productSearch .v-input__slot{
-  width:311px !important;
+#productSearch .v-input__slot {
+  width: 311px !important;
 }
-.v-list-item-group .v-list-item--active{
+
+.v-list-item-group .v-list-item--active {
   background-color: #ACE7C4 !important;
 }
 
-fieldset{
-  border: 1px solid #F5F5F5 !important; 
+fieldset {
+  border: 1px solid #F5F5F5 !important;
 }
 
-.leaflet-control-zoom-in{
+.leaflet-control-zoom-in {
   color: black !important;
 }
-.leaflet-control-zoom-out{
+
+.leaflet-control-zoom-out {
   color: black !important;
+}
+
+.custom-row {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-row-end {
+  display: flex;
+  justify-content: end;
+}
+
+.custom-row-start {
+  display: flex;
+  justify-content: start;
 }

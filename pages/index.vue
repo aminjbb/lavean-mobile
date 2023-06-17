@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <HomeMainbanner /> -->
+    <HomeMainbanner />
     <!-- <div class="position__relative">
       <v-divider class="ma-6"></v-divider>
       <div class="position__absolute sptial-sales-box text-center">
@@ -23,13 +23,13 @@
 
         </v-container>
       </v-img>
-      <v-row justify="center" align="center">
+      <div class="custom-row">
         <v-btn width="130" height="35" class="px-15 mt--20" color="Cultured" dark rounded="xl">
           <span class="t14400 Gray02--text">
             شروع کنیم
           </span>
         </v-btn>
-      </v-row>
+      </div>
     </div>
 
     <HomeCategory />

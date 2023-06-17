@@ -18,30 +18,32 @@
       <v-divider></v-divider>
       <v-list class="px-8 mt-5">
 
-        <v-list-group >
+        <v-list-group>
           <template v-slot:activator>
             <v-list-item-action>
               <v-img width="16" :src="require('~/assets/img/shopMenu.svg')"></v-img>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title />
-            <span class="Gray02--text">  فروشگاه</span>
+              <span class="Gray02--text"> فروشگاه</span>
             </v-list-item-content>
           </template>
 
-          <v-list-item class="my-2" active-class="primary" v-for="(item, i) in produCategories" :key="i" :to="'/products?cat=' +item.id" router exact style="height: 26px; ; border-radius: 13px;"
-            no-action sub-group>
+          <v-list-item class="my-2" active-class="primary" v-for="(item, i) in produCategories" :key="i"
+            :to="'/products?cat=' + item.id" router exact style="height: 26px; ; border-radius: 13px;" no-action
+            sub-group>
             <v-list-item-action>
               <v-img width="16" :src="item.icon"></v-img>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <span class="Gray02--text">  {{item.name}}</span>
-                </v-list-item-title>
+                <span class="Gray02--text"> {{ item.name }}</span>
+              </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
-        <v-list-item class="my-2" active-class="primary" v-for="(item, i) in items" :key="i" :to="item.to" router exact style="height: 26px; border-radius: 13px;" v-model="page">
+        <v-list-item class="my-2" active-class="primary" v-for="(item, i) in items" :key="i" :to="item.to" router exact
+          style="height: 26px; border-radius: 13px;" v-model="page">
           <v-list-item-action>
             <v-img width="16" :src="item.icon"></v-img>
           </v-list-item-action>
@@ -72,19 +74,22 @@
           <img width="18" src="~/assets/img/usericon.svg" alt="">
         </span>
       </div>
-      <div class="gold-price-box-img">
-        <img src="~/assets/img/goldPriceImg.svg" alt="">
+      <div class="gold-price-box-1">
+        <div class="gold-price-box">
+          <div class="gold-price-box-img">
+            <img src="~/assets/img/goldPriceImg.svg" alt="">
+          </div>
+          <v-row justify="space-between" class="pt-4 px-8 Arsenic--text">
+            <span class="t10400">
+              قیمت لحظه ای طلا
+            </span>
+            <span class="t10400">
+              ۱,۴۵۵,۸۸۸,۹۳۰ ریال
+            </span>
+          </v-row>
+        </div>
       </div>
-      <div class="gold-price-box">
-        <v-row justify="space-between" class="pt-4 px-8 Arsenic--text">
-          <span class="t10400">
-            قیمت لحظه ای طلا
-          </span>
-          <span class="t10400">
-            ۱,۴۵۵,۸۸۸,۹۳۰ ریال
-          </span>
-        </v-row>
-      </div>
+
     </v-app-bar>
     <v-main>
       <div class="rcontainer">
@@ -113,8 +118,8 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      page:'',
-      cat:'',
+      page: '',
+      cat: '',
       items: [
         // {
         //   icon: require('~/assets/img/shopMenu.svg'),
@@ -160,21 +165,21 @@ export default {
       try {
         var cat = [
           {
-            name:'همه',
-            id:''
+            name: 'همه',
+            id: ''
           }
         ]
         this.$store.getters['get_produCategories'].forEach(element => {
           var form = {
-            name : element.name ,
-            id : element.id
+            name: element.name,
+            id: element.id
           }
           cat.push(form)
         });
         return cat
       } catch (error) {
         return []
-      } 
+      }
     }
   },
 

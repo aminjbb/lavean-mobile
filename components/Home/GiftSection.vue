@@ -1,5 +1,5 @@
 <template>
-    <v-row justify="center" align="ceneter" class="my-15">
+    <div  class="my-15 custom-row">
         <div class="gift-section">
             <v-row justify="center">
                 <v-col cols="5">
@@ -73,7 +73,7 @@
             </v-row>
         </div>
 
-    </v-row>
+    </div>
 </template>
 
 <script>
