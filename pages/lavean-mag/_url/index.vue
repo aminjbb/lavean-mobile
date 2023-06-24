@@ -14,7 +14,7 @@
                 بگیرید که ما در این مطلب برایتان توضیح داده‌ایم.
             </p>
         </div>
-        <v-row justify="center" class="my-5">
+        <div class="my-5 custom-row">
             <div class="owner-blog-box">
                 <v-row justify="space-between">
                     <div class="my-5 mr-8">
@@ -28,7 +28,7 @@
                     </div>
                 </v-row>
             </div>
-        </v-row>
+        </div>
 
 
         <div class="my-5 px-5">
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <v-row justify="center" class="my-5">
+        <div  class="my-5 custom-row">
             <div class="mag-tag">
                 <v-row justify="space-between" align="center" class="pt-7">
                     <div class="mr-5">
@@ -75,7 +75,7 @@
                     </div>
                 </v-row>
             </div>
-        </v-row>
+        </div>
     </div>
 </template>
 
