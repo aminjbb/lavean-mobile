@@ -55,7 +55,7 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
-
+ .dist
 
 
 # parcel-bundler cache (https://parceljs.org/)

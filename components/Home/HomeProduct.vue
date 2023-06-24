@@ -7,7 +7,14 @@
     </v-row> -->
 
     <div id="homeProduct" class="px-5">
-
+        <div class="px-5 my-5">
+            <v-divider class="mb-8"></v-divider>
+            <div class="text-rigth">
+                <span class="t18600">
+                    مناسب شما!
+                </span>
+            </div>
+        </div>
         <vueper-slides class="no-shadow" :arrows="true" :touchable="true" fade :autoplay="false" :bullets="false"
             :shadow="false">
             <template #arrow-left>

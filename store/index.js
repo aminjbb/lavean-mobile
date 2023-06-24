@@ -144,9 +144,6 @@ export const actions = {
     commit('set_produCategoriesHome', categories.clientProductCategories.results);
   },
   async set_clientBanners({ commit }, id) {
-    const requestHeaders = {
-      Authorization: "Bearer " + cookies.get("customer_token"),
-    };
     const query = gql`
     query{
         clientBanners(type:SHOP_DESKTOP_MAIN_PAGE_TOP){
@@ -157,7 +154,7 @@ export const actions = {
         }
           
       } `;
-    const banner = await this.$graphql.default.request(query, {}, requestHeaders);
+    const banner = await this.$graphql.default.request(query, {});
     commit('set_clientBanners', banner.clientBanners.results);
   },
   async set_clientPayment({ commit }, id) {

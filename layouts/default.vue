@@ -58,7 +58,7 @@
 
       <v-spacer />
       <span class="mr-10">
-        <img width="67" height="16" src="~/assets/img/mainLogo.png" alt="">
+        <img width="67" height="16" src="~/assets/img/mainLogo.png" alt="" @click="$router.push('/')">
       </span>
       <v-spacer />
 
@@ -70,7 +70,7 @@
           <img width="16" src="~/assets/img/cardicon.svg" alt="">
         </span>
 
-        <span class="mx-1" @click="$router.push('/user-profile')">
+        <span class="mx-1" @click="gotoUserProfile()">
           <img width="18" src="~/assets/img/usericon.svg" alt="">
         </span>
       </div>
@@ -127,6 +127,11 @@ export default {
         //   to: '/products'
         // },
         {
+          icon: require('~/assets/img/laveanMenu.svg'),
+          title: 'صفحه اصلی',
+          to: '/'
+        },
+        {
           icon: require('~/assets/img/magMenu.svg'),
           title: 'لاوین مگ',
           to: '/lavean-mag'
@@ -141,11 +146,7 @@ export default {
           title: 'تماس با ما',
           to: '/contact-us'
         },
-        {
-          icon: require('~/assets/img/laveanMenu.svg'),
-          title: 'صفحه اصلی',
-          to: '/'
-        },
+
       ],
       miniVariant: false,
       right: true,
@@ -157,6 +158,16 @@ export default {
   methods: {
     openSearchModal() {
       this.$store.commit('public/set_searchModal', true)
+    },
+
+    gotoUserProfile() {
+      if (this.$cookies.get('customer_token')) {
+        this.$router.push('/user-profile')
+      }
+      else {
+        this.$router.push('/register')
+      }
+
     }
   },
 

@@ -1,6 +1,6 @@
 <template>
     <div class="green-footer mt-15" :class="!footer ? 'pt-2' : ''">
-        <div class="mt-14 text-center">
+        <div class="mt-12 text-center">
             <span class="t14600 MagicMint--text">
                 لاوین در شبکه های اجتماعی
             </span>
@@ -41,12 +41,12 @@
                 </span>
             </div>
 
-            <div class="custom-row mt-5">
+            <div class="custom-row mt-15">
                 <div class="text-center">
                     <v-img width="98" height="24" :src="require('~/assets/img/darkLogo.png')"></v-img>
                 </div>
             </div>
-            <div class="custom-row mt-5">
+            <div class="custom-row ">
                 <div class="mt-5">
                     <v-img width="22" height="22" :src="require('~/assets/img/roshaklogo.png')"></v-img>
                 </div>
@@ -54,7 +54,7 @@
 
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center ">
                 <span class="t10400 white--text">
                     Powered by Roshak
                 </span>
