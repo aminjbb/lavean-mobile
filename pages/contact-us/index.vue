@@ -1,5 +1,5 @@
 <template>
-    <v-row justify="center" class="mt-15 px-4 mb-10">
+    <div class=" custom-row mt-15 px-4 mb-10">
         <v-col cols="12">
             <div class="mt-5">
                 <div class="ma-0 box-h">
@@ -25,13 +25,11 @@
                 </div>
             </div>
             <div class="custom-row mt-15">
-                <v-col cols="5" class="mt-10">
-                    <v-btn width="179" height="39" block color="Black" dark rounded="xl">
-                        <span class="t12400">
-                            ارسال
-                        </span>
-                    </v-btn>
-                </v-col>
+                <v-btn width="179" height="39" color="Black" dark rounded="xl" class="mt-15">
+                    <span class="t12400">
+                        ارسال
+                    </span>
+                </v-btn>
 
             </div>
         </v-col>
@@ -64,18 +62,15 @@
                 </v-card>
 
                 <div class="custom-row mt-10" v-if="showBranches.length < branches.length">
-                    <v-col cols="5" class="mt-10">
-                        <v-btn width="179" height="39" outlined color="Black" dark rounded="xl" @click="showMoreBranche()">
-                            <span class="t12400">
-                                بیشتر
-                            </span>
-                        </v-btn>
-                    </v-col>
-
+                    <v-btn width="179" height="39" outlined color="Black" dark rounded="xl" @click="showMoreBranche()" class="mt-1">
+                        <span class="t12400">
+                            بیشتر
+                        </span>
+                    </v-btn>
                 </div>
             </div>
         </v-col>
-    </v-row>
+    </div>
 </template>
 
 <script>

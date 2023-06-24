@@ -12,7 +12,7 @@
                     <p class="t10400 VampireBlack--text">ارسال رایگان به سراسر کشور</p>
                     <p  class="t10400 VampireBlack--text">امکان تعویض تا یک هفته بعد از خرید</p>
                     <p  class="t10400 VampireBlack--text">عودت و بازگشت وجه تا 24 ساعت بعد از خرید</p>
-                    <p  class="t10400 VampireBlack--text">با هر خرید 2% از کل مبلغ سفارشتان را در کیف پول دریافت و برای خرید بعدی از اعتبارتان استفاده
+                    <p  class="t10400 VampireBlack--text lh-22">با هر خرید 2% از کل مبلغ سفارشتان را در کیف پول دریافت و برای خرید بعدی از اعتبارتان استفاده
                         کنید!</p>
                     <p  class="t10400 VampireBlack--text">تضمین اصالت کالا</p>
                     <p  class="t10400 VampireBlack--text">تحویل سریع در کوتاه ترین زمان</p>

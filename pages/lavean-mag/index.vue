@@ -22,7 +22,7 @@
             </v-img>
         </div>
 
-        <v-row class="mt-8" justify="center">
+        <div class="mt-8 custom-row" >
             <v-col cols="10" class="pb-0">
                 <div id="blog-search" class="position__relative">
                     <v-text-field color="black" height="49" v-model="search" placeholder="جست‌وجوی مطلب " dense
@@ -84,7 +84,7 @@
                     </v-btn>
                 </v-row>
             </v-col>
-        </v-row>
+        </div>
     </div>
 </template>
 

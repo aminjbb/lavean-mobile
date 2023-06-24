@@ -1867,6 +1867,7 @@ fieldset {
 }
 
 .custom-row {
+  flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: center;
