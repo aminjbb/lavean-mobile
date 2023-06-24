@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-15 mb-45">
+    <div class=" mt-15 mb-45">
         <div class="px-10">
             <vueper-slides id="pdpCarousel" style="border-radius: 25px;" ref="vueperslides1" :arrows="false"
                 :touchable="false" fade :autoplay="false" :bullets="true" :slide-ratio="1.11">
@@ -39,7 +39,7 @@
             </v-row>
         </div>
 
-        <v-row justify="center ">
+        <div class="custom-row" >
             <div class=" info-pdp-box">
                 <v-row justify="center" align="center" class="px-10 pt-1">
                     <v-col cols="4">
@@ -104,7 +104,7 @@
                     </v-col>
                 </v-row>
             </div>
-        </v-row>
+        </div>
 
         <div class="my-10">
             <div class="text-rigth px-10">
@@ -144,18 +144,18 @@
                 </span>
             </div>
 
-            <v-row justify="center" class="my-3">
+            <div  class="my-3 custom-row">
                 <div class="branch-header px-9">
                     <span class="text-center t12400 Gray02--text">وزن</span>
                     <span class="text-center t12400 Gray02--text">نام فروشگاه</span>
                 </div>
-            </v-row>
-            <v-row justify="center" class="my-3" v-for="(branche, index) in branches" :key="index">
+            </div>
+            <div justify="center" class="my-3 custom-row" v-for="(branche, index) in branches" :key="index">
                 <div class="branch-body px-9">
                     <span class="text-center t12400 Gray02--text">{{ branche.variant.weight }}</span>
                     <span class="text-center t12400 Gray02--text">{{ branche.branch.name }}</span>
                 </div>
-            </v-row>
+            </div>
         </div>
 
         <div class="my-10 mb-15">
