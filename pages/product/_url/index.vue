@@ -262,8 +262,7 @@ export default {
             canonical,
             schema,
             collection{
-                name, 
-                url,
+                name
             }
             images{
                 imageThumbnail{

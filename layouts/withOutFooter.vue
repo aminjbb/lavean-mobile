@@ -48,19 +48,22 @@
           <img width="18" src="~/assets/img/usericon.svg" alt="">
         </span>
       </div>
-      <div class="gold-price-box-img">
-        <img src="~/assets/img/goldPriceImg.svg" alt="">
+      <div class="gold-price-box-1">
+        <div class="gold-price-box">
+          <div class="gold-price-box-img">
+            <img src="~/assets/img/goldPriceImg.svg" alt="">
+          </div>
+          <v-row justify="space-between" class="pt-4 px-8 Arsenic--text">
+            <span class="t10400">
+              قیمت لحظه ای طلا
+            </span>
+            <span class="t10400">
+              ۱,۴۵۵,۸۸۸,۹۳۰ ریال
+            </span>
+          </v-row>
+        </div>
       </div>
-      <div class="gold-price-box">
-        <v-row justify="space-between" class="pt-4 px-8 Arsenic--text">
-          <span class="t10400">
-            قیمت لحظه ای طلا
-          </span>
-          <span class="t10400">
-            ۱,۴۵۵,۸۸۸,۹۳۰ ریال
-          </span>
-        </v-row>
-      </div>
+
     </v-app-bar>
     <v-main>
       <div class="rcontainer">
