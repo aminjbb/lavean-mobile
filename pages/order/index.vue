@@ -1,9 +1,9 @@
 <template>
     <div class="rcontainer mt-15 mb-45">
-        <v-row justify="center" align="center">
+        <div class="custom-row" >
             <v-col cols="11">
                 <v-row justify="center">
-                    <v-col cols="12 ">
+                    <v-col cols="12 " class="mb-10">
                         <OrderDetail v-if="orderStep == 1" />
                         <OrderUserInfo ref="OrderUserInfo" v-if="orderStep == 2" />
                         <OrderAddress ref="OrderAddress" v-if="orderStep == 3" />
@@ -63,7 +63,7 @@
                 </v-row>
             </v-col>
 
-        </v-row>
+        </div>
     </div>
 </template>
 

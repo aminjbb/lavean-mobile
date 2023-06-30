@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed right app
-      style="height:100% ;">
+      style="height:100% ; z-index: 99;">
       <div class="pa-2">
         <v-col>
           <v-row class="ma-0" justify="space-between" align="center">
@@ -53,7 +53,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app color="white" height="75" class="px-0">
+    <v-app-bar :clipped-left="clipped" fixed app color="white" height="75" class="px-0" style="z-index: 100;">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-spacer />

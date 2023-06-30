@@ -12,7 +12,7 @@
             <v-divider></v-divider>
             <div v-if="cartDetailsLength > 0">
                 <v-row>
-                    <OrderCard v-for="(card, index) in cartDetails" :key="index" :card="card" :length="cartDetailsLength"/>
+                    <OrderCardDetail v-for="(card, index) in cartDetails" :key="index" :card="card" :length="cartDetailsLength"/>
                 </v-row>
             </div>
             <div v-else>
@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import OrderCard from '~/components/Order/OrderCard.vue'
+import OrderCardDetail from '~/components/Order/OrderCardDetail.vue'
 export default {
     components: {
-        OrderCard
+        OrderCardDetail
     },
     computed: {
         
