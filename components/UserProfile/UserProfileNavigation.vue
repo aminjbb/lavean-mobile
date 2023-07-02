@@ -7,13 +7,13 @@
     </v-row>
     <div class="text-center mt-m-4">
       <span class="t14400">
-        امین جباری
+        {{userFirstName}}
       </span>
     </div>
     <div class="text-center mt-2">
       <v-chip class="ma-2 px-5" color="white" text-color="white">
         <span class="t12400 Gray02--text">
-          09223732465
+          {{userMobile}}
         </span>
       </v-chip>
     </div>
@@ -89,25 +89,22 @@ export default {
       return this.$store.getters['wallet/get_userAccount']
     },
     userInfo() {
-      return this.$store.getters["public/get_userInfo"];
+      return this.$store.getters['get_meCustomer']
     },
-
-    name() {
+    userFirstName() {
       try {
-        return this.userInfo.user.first_name
+        return this.userInfo.client.user.firstName
       } catch (error) {
         return ''
       }
     },
-
-    userPhone() {
+    userMobile() {
       try {
-        return this.userInfo.mobile
+        return this.userInfo.client.mobile
       } catch (error) {
         return ''
       }
     },
-
     baseUrl() {
       return process.env.baseUrl + '/media/'
     }
