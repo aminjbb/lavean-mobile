@@ -110,12 +110,12 @@
                             <v-row justify="center" align="center" class="mt-1 mr-1 px-15">
                                 <v-col cols="6">
                                     <div>
-                                        <span class="t12400 GraniteGray--text">قابل پرداخت</span>
+                                        <span class="t12400 DeepGreen--text">قابل پرداخت</span>
                                     </div>
 
                                     <div>
-                                        <span class="t12600 GraniteGray--text dana-fa">{{ publicMethod.splitChar(cardPrice) }} <span
-                                                class="t12400 GraniteGray--text mr-1">تومان</span></span>
+                                        <span class="t12600 DeepGreen--text dana-fa">{{ publicMethod.splitChar(cardPrice) }} <span
+                                                class="t12400 DeepGreen--text mr-1">تومان</span></span>
                                     </div>
 
 

@@ -13,6 +13,7 @@
             <div v-if="cartDetailsLength > 0">
                 <v-row>
                     <OrderCardDetail v-for="(card, index) in cartDetails" :key="index" :card="card" :length="cartDetailsLength"/>
+                   
                 </v-row>
             </div>
             <div v-else>
@@ -33,8 +34,20 @@
                         </span>
                     </v-btn>
                 </v-row>
+              
             </div>
         </v-card>
+        <v-row justify="center" class="mt-2" v-if="cartDetailsLength > 0">
+            <v-col cols="1">
+                <img src="~/assets/img/warning.svg" alt="">
+            </v-col>
+            <v-col cols="10">
+                <p class="GraniteGray--text t11400">هزینه این سفارش هنوز پرداخت نشده‌ و در صورت اتمام موجودی، کالاها از سبد حذف می‌شوند.</p>
+            </v-col>
+        </v-row>
+        <div class="text-rigth mt-2 ">
+           
+        </div>
     </div>
 </template>
 

@@ -11,14 +11,14 @@
                     <v-card outlined class="border-r-15 mt-2 pa-0" width="106" height="31">
                         <v-item-group v-model="available" active-class="btn2_toggle-plp">
                             <v-item v-slot="{ active, toggle }" value="available" class="pa-0 ma-0">
-                                <v-btn height="31" depressed rounded class=" white_back border-r-15" small @click="toggle"
+                                <v-btn height="28" depressed rounded class=" white_back border-r-15" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
                                     <span class="t10400">موجود</span>
                                 </v-btn>
                             </v-item>
                             <v-item v-slot="{ active, toggle }" value="all" class="pa-0 ma-0 ml-0">
-                                <v-btn height="31" depressed rounded class="border-r-15 white_back" small @click="toggle"
+                                <v-btn height="28" depressed rounded class="border-r-15 white_back" small @click="toggle"
                                     active-class="btn2_toggle-plp">
 
                                     <span class="t10400"> همه</span>
