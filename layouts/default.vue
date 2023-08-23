@@ -83,8 +83,8 @@
             <span class="t10400">
               قیمت لحظه ای طلا
             </span>
-            <span class="t10400">
-              ۱,۴۵۵,۸۸۸,۹۳۰ ریال
+            <span class="t10400 dana-fa" >
+             {{splitChar(clientGoldPrice)}} ریال
             </span>
           </v-row>
         </div>
@@ -159,6 +159,13 @@ export default {
     openSearchModal() {
       this.$store.commit('public/set_searchModal', true)
     },
+    splitChar(text) {
+            if (text) {
+                return text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                return text;
+            }
+        },
 
     gotoUserProfile() {
       if (this.$cookies.get('customer_token')) {
@@ -172,6 +179,11 @@ export default {
   },
 
   computed: {
+    clientGoldPrice(){
+      const goldPrice = this.$store.getters['get_clientGoldPrice']
+      if(goldPrice == null) return '-'
+      else return goldPrice.price
+    },
     produCategories() {
       try {
         var cat = [
@@ -196,6 +208,7 @@ export default {
 
   beforeMount() {
 
+    this.$store.dispatch('set_clientGoldPrice')
     this.$store.dispatch('set_produCategories')
   }
 }
