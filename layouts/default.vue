@@ -25,7 +25,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title />
-              <span class="Gray02--text"> فروشگاه</span>
+              <span class="Gray02--text t12400"> فروشگاه</span>
             </v-list-item-content>
           </template>
 
@@ -37,7 +37,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                <span class="Gray02--text"> {{ item.name }}</span>
+                <span class="Gray02--text t12400"> {{ item.name }}</span>
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -48,7 +48,7 @@
             <v-img width="16" :src="item.icon"></v-img>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title   > <span class="t12400">{{ item.title }}</span></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -127,8 +127,8 @@ export default {
         //   to: '/products'
         // },
         {
-          icon: require('~/assets/img/laveanMenu.svg'),
-          title: 'صفحه اصلی',
+          icon: require('~/assets/img/laveenCollection.svg'),
+          title: 'کالکشن های لاوین',
           to: '/'
         },
         {

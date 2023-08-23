@@ -7,7 +7,7 @@
             <vueper-slide >
                 <template #content>
                     <div class="lavean-level-box pt-10">
-                        <div class="pr-10 custom-row">
+                        <div class=" custom-row">
                             <v-col cols="3">
                                 <img width="51" height="44" :src="require('~/assets/img/HomeShop.svg')">
                             </v-col>

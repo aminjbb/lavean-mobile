@@ -163,7 +163,7 @@
                 <span class="t14600 Gray02--text">مناسب شما!</span>
             </div>
             <div class="mt-5">
-                <HomeProduct />
+                <HomeProduct type="pdp"/>
             </div>
         </div>
 
@@ -446,7 +446,7 @@ export default {
 
     mounted() {
         if (this.bestVariant) {
-            this.title = 'وزن'
+            this.title = ''
             this.changeVariant = this.bestVariant.id
         }
         else {

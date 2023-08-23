@@ -7,7 +7,7 @@
     </v-row> -->
 
     <div id="homeProduct" class="px-5">
-        <div class="px-5 my-5">
+        <div class="px-5 my-5" v-if="type !== 'pdp'">
             <v-divider class="mb-8"></v-divider>
             <div class="text-rigth">
                 <span class="t18600">
@@ -40,6 +40,9 @@ import ProductCard from "~/components/Public/ProductCard.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 export default {
+    props:{
+        type:''
+    },
     components: {
         VueperSlides,
         VueperSlide,
